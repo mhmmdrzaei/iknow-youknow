@@ -25,11 +25,6 @@ export default {
             name: 'sort',
             type: 'number',
           },
-          {
-            name:'description',
-            title: 'description',
-            type:'text'
-          },
-
+        
     ]
 }

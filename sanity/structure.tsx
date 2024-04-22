@@ -39,7 +39,7 @@ export const myStructure: (S: any) => ListBuilder = (S) => {
      // Project
      S.listItem()
      .title('Projects')
-     .icon(CaseIcon) // Or whatever icon you prefer
+     .icon(LemonIcon) // Or whatever icon you prefer
      .child(S.documentTypeList('singleProject')),
     //  proj. cat
     S.listItem()
@@ -48,8 +48,8 @@ export const myStructure: (S: any) => ListBuilder = (S) => {
      .child(S.documentTypeList('projectCategory')),
       // settings
       S.listItem()
-        .title('Site Info')
-        .icon(CogIcon)
+        .title('Home')
+        .icon(HomeIcon)
         .child(
           S.document()
             .schemaType('siteSettings')
@@ -57,8 +57,8 @@ export const myStructure: (S: any) => ListBuilder = (S) => {
         ),
       // info
       S.listItem()
-        .title('Information')
-        .icon(HomeIcon)
+        .title('Office')
+        .icon(CaseIcon)
         .child(
           S.document()
             .schemaType('information')

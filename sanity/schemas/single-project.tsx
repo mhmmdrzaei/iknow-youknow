@@ -30,6 +30,7 @@ export default {
         title: 'Visibility',
         name: 'visible',
         type: 'boolean',
+        initialValue: true
         // validation: Rule => Rule.required()
       },
       {
@@ -74,15 +75,32 @@ export default {
         type: 'string'
       },
       {
+        name: 'clientName',
+        title: 'Client Name',
+        type: 'string'
+      },
+      {
         name:'shortProjectDescription',
         title: 'Short Project Description', 
-        type: 'string'
+        type: 'text'
       },
       {
         name: 'category',
         title: 'Category',
         type: 'reference',
         to: {type: 'projectCategory'},
+      },
+      {
+        title: 'Credits',
+        name: 'creditsProject',
+        type: 'array',
+        of: [
+          {
+            type: 'credits'
+            
+          }
+          
+        ]    
       },
       {
         title: 'Hero Image / Video',
@@ -134,6 +152,7 @@ export default {
         name: 'projectImages',
         type: 'array',
         of:[
+
             {
               title: 'Project Image',
               name: 'projectImage',
@@ -171,6 +190,16 @@ export default {
                   }
               ]
             }, 
+            {
+              title: 'Project Text', 
+              name: 'projectText',
+              type: 'object', 
+              fields: [
+                {name: 'Text', type: 'text'
+              , title: 'Project Text'},
+              ]
+            }
+
 
 
         ]

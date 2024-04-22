@@ -16,16 +16,7 @@ export default {
         type: 'file',
         
       },
-      {
-        name: 'email',
-        title: 'Email Address',
-        type: 'string'
-      },
-      {
-        name: 'latlong',
-        title: 'Lat. Long.',
-        type: 'string'
-      },
+
            {
         title: 'Hero Image / Video',
         name: 'herovisual',
@@ -56,15 +47,29 @@ export default {
         ]
       },
       {
-        name: 'footerText',
-        title: 'Footer Text',
-        type: 'string'
+        title: 'Identity', 
+        name: 'identity',
+        type: 'array', 
+        of: [{type: 'block'}]
+      },
+      {
+        title: 'Motion', 
+        name: 'motion',
+        type: 'array', 
+        of: [{type: 'block'}]
+      },
+      {
+        title: 'Spaces', 
+        name: 'spaces',
+        type: 'array', 
+        of: [{type: 'block'}]
       },
       {
         name: 'seo',
         title: 'SEO info',
         type: 'seo'
       }
+
 
       
     ]
