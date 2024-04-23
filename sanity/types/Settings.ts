@@ -1,3 +1,4 @@
+import { PortableTextBlock } from "sanity";
 
 export type HeroImage = {
   _key: string;
@@ -14,19 +15,17 @@ export type HeroVideo = {
 export type HeroVisual = HeroImage | HeroVideo;
 
 export type Settings = {
-  password: string;
-  logo: string;
   _id: string;
-  _createdAt: Date;
   title: string;
-  email: string;
-  latlong: string;
-  seoTitle: string;
-  seoDescription: string;
-  seoImageUrl: string;
-  cache: string;
-  footerText: string;
-  herovisual: HeroVisual[];
+  logo: string;
+  herovisual: (HeroImage | HeroVideo)[];
+  seo: SeoInfo;
 };
 
 
+export type SeoInfo = {
+  _type: 'seo';
+  title: string;
+  description: string;
+  seoImageUrl?: string;
+};

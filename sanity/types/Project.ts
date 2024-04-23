@@ -1,39 +1,56 @@
-import { PortableTextBlock } from "sanity"
-
-export type Project = {
-  _id: string,
-  name: string, 
-  title: string,
-  visible: boolean,
-  projectdescription: PortableTextBlock[],
-  projectDate: string,
-  projectMedium: string,
-  mainImage: string, // Corrected casing
-  categoryName: string, 
-  categorySlug: string,
-  slug: string,
-  password: string,
-  sort: number,
-  projectAssets: ProjectAsset[], // Added type for projectAssets
-  seo_project: SeoProject // Added type for seo_project
-};
-
-export type ProjectAsset = {
-  projectImage?: ProjectImage,
-  projectVideo?: ProjectVideo
-};
+import { PortableTextBlock } from "sanity";
 
 export type ProjectImage = {
-  attribution: string,
-  width: number
+  _type: 'image';
+  attribution: string;
+  width: string;
+  heroImgUrl: string;
 };
 
 export type ProjectVideo = {
-  attribution: string,
-  width: number
+  _type: 'file';
+  attribution: string;
+  width: string;
+  heroImgUrl: string;
 };
 
+export type ProjectText = {
+  _type: 'object';
+  Text: string;
+  heroImgUrl: string;
+  width: string;
+};
+
+export type ProjectAssets = ProjectImage | ProjectVideo | ProjectText;
+
 export type SeoProject = {
-  description: string,
-  seo_image?: string // You might want to specify the type according to your schema
+  description: string;
+  seo_image?: string; 
+};
+
+export type SingleProject = {
+  _id: string;
+  title: string;
+  slug: {
+    _type: 'slug';
+    current: string;
+  };
+  sort: number;
+  visible: boolean;
+  password?: string;
+  projectdescription: PortableTextBlock[];
+  projectDate: string;
+  clientName: string;
+  shortProjectDescription: string;
+  categoryName: string;
+  categorySlug: string;
+  
+  creditsProject: {
+    _key: string;
+    creditLabel: string;
+    creditName: string;
+  }[];
+  projectHerovisual: (ProjectImage | ProjectVideo | ProjectText)[];
+  projectImages: ProjectAssets[];
+  seo_project: SeoProject;
 };

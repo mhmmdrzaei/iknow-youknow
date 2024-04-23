@@ -25,6 +25,12 @@ export default {
             name: 'sort',
             type: 'number',
           },
+          {
+            title: 'Description', 
+            name: 'cat_desc',
+            type: 'array', 
+            of: [{type: 'block'}]
+          },
         
     ]
 }

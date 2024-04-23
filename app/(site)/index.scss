@@ -1,0 +1,62 @@
+
+
+
+
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: calc($sizeValue/10) * 1rem;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: #FFFFFF;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+figure {
+    margin: 0;
+}
+.flex {
+    display: flex;
+    flex-flow:wrap;
+    justify-content: space-between;
+}
+h1, h2, h3, h4, h5, p, span, button {
+   
+    
+}
+
+
+a {
+    color: #000000;
+    text-decoration: none;
+    &:active{
+        font-weight: 700;
+    }
+}
+button {
+    color: #000000;
+}
+main {
+    max-width: 2000px;
+    margin: 0 auto;
+    @extend .flex;
+    position: relative;
+}
+body {
+    margin: 24px;
+   
+    
+    
+}
+p, a {
+    line-height: 1.5;
+}
+@media(max-width: 400px){
+    
+
+}
+
+

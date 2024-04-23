@@ -3,8 +3,7 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from './config/client-config'
 import { Settings } from "./types/Settings";
 import { Information } from "./types/Information";
-import { Press } from "./types/Press";
-import { Project } from "./types/Project"
+import { SingleProject } from "./types/Project"
 import { ProjectCategory } from "./types/ProjectCategory";
 
 
@@ -13,10 +12,7 @@ export async function getsettings(): Promise<Settings[]> {
     return createClient(clientConfig).fetch(
       `*[_type == "siteSettings"]{
         _id,
-       email,
-       latlong,
        title,
-       footerText, 
        "herovisual": herovisual[]{
           _key,
           _type,
@@ -33,24 +29,23 @@ export async function getsettings(): Promise<Settings[]> {
     )
   }
 
-  export async function getProjects(): Promise<Project[]> {
+  export async function getProjects(): Promise<SingleProject[]> {
     return createClient(clientConfig).fetch(
       groq`*[_type == "singleProject"]{
         _id,
         title,
         "slug": slug.current,
         visible,
-        projectdescription,
-        projectDate,
+        clientName,
         shortProjectDescription,
         "categoryName": category->name, // Include the category name
         "categorySlug": category->slug.current, 
         sort,
+        projectDate,
         "projectHerovisual": projectHerovisual[]{
           _key,
           _type,
           "heroImgUrl": asset->url,
-          name,
           attribution
        },
 
@@ -58,29 +53,44 @@ export async function getsettings(): Promise<Settings[]> {
     }`,
     )
   }
-  export async function getProject(slug: string): Promise<Project> {
+  export async function getProject(slug: string): Promise<SingleProject> {
     return createClient(clientConfig).fetch(
       groq`*[_type == "singleProject"&& slug.current == $slug][0]{
-        _id,
+        id,
         title,
         "slug": slug.current,
-        visibility,
+        visible,
         projectdescription,
-        projectDate,
         password,
-        projectLocation,
         "categoryName": category->name, // Include the category name
         "categorySlug": category->slug.current, 
-        projectMedium,
-        "mainimage": mainimage.asset->url,
+       
+        "projectHerovisual": projectHerovisual[]{
+          _key,
+          _type,
+          "heroImgUrl": asset->url,
+          attribution
+       },
         "projectImages": projectImages[]{
           "url": asset->url,
           attribution,
-          _type
-        }
-
-
-        
+          _type,
+          width,
+         text
+        },
+       "seo": seo_project{
+         description,
+         seo_image {
+           "seo_image": asset->url
+       }
+         },
+      creditsProject[]{
+          _key,
+         creditLabel,
+         creditName
+         
+         
+       }
         
     }`,
     )
@@ -90,25 +100,24 @@ export async function getsettings(): Promise<Settings[]> {
       groq`*[_type == "information"]{
         _id,
         title,
-        pageTitle,
         information,
+        services_office,
+        contactInfo[]{
+          urlLabel,
+          urlurl,
+          _key
+        },
+        socialInfo[] {
+          _key,
+          socialName,
+          socialURL  
+        }
         
     }`,
 
     )
   }
-  export async function getPress(): Promise<Press[]>{
-    return createClient(clientConfig).fetch(
-      groq`*[_type == "press"]{
-        _id,
-        title,
-        pageTitle,
-        presslistings,
-        
-    }`,
 
-    )
-  }
 
   export async function getCat(): Promise<ProjectCategory[]>{
     return createClient(clientConfig).fetch(
@@ -117,7 +126,7 @@ export async function getsettings(): Promise<Settings[]> {
         name,
         sort,
         "slug": slug.current,
-        description
+        cat_desc
       
         
     }`,

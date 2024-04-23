@@ -1,5 +1,3 @@
-import { title } from "process";
-import projectCategory from "./projectCategory";
 export default {
     name: 'singleProject',
     title: 'Projects',
@@ -195,7 +193,7 @@ export default {
               name: 'projectText',
               type: 'object', 
               fields: [
-                {name: 'Text', type: 'text'
+                {name: 'text', type: 'text'
               , title: 'Project Text'},
               ]
             }

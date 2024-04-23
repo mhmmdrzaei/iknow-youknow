@@ -1,5 +1,3 @@
-import seo from './page-seo'
-
 export default {
     name: 'siteSettings',
     title: 'Site Info',
@@ -45,24 +43,6 @@ export default {
   
             }
         ]
-      },
-      {
-        title: 'Identity', 
-        name: 'identity',
-        type: 'array', 
-        of: [{type: 'block'}]
-      },
-      {
-        title: 'Motion', 
-        name: 'motion',
-        type: 'array', 
-        of: [{type: 'block'}]
-      },
-      {
-        title: 'Spaces', 
-        name: 'spaces',
-        type: 'array', 
-        of: [{type: 'block'}]
       },
       {
         name: 'seo',
