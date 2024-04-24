@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import ProjectDetails from '../projectDetails/projectDetails.component';
-import { Project } from '@/sanity/types/Project';
+import { SingleProject } from '@/sanity/types/Project';
 
 export const dynamic = 'force-dynamic'
 
 type PasswordProtectedProjectProps = {
-  project: Project;
+  project: SingleProject;
 };
 
 const PasswordProtectedProject: React.FC<PasswordProtectedProjectProps> = ({ project }) => {

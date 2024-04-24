@@ -2,6 +2,7 @@ import { SingleProject } from '@/sanity/types/Project';
 import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 import Link from 'next/link';
 import Image from 'next/image';
+import { v4 as uuidv4 } from 'uuid';
 type HeaderProps = {
   projects: SingleProject[];
   categories: ProjectCategory[];
@@ -30,14 +31,51 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                     <section className="projectEach">
                     {project.projectHerovisual && (
                       project.projectHerovisual.map((hero)=> {
-                        return (
-                          <figure><Image src={hero.heroImgUrl} width={700} height={700}className={`${hero._type} heroimage`}  
-                         
-                          alt={`${project.title}`} />
-                          
-                          </figure>
-                      
-                        )
+                        switch (hero._type) {
+                          case 'hero_video':
+                            return (
+                              <div key={uuidv4()} className={`hero_Video`}>
+                                <video autoPlay loop muted playsInline>
+                                  <source src={hero.heroImgUrl} type="video/mp4" />
+                                  Your browser does not support the video tag.
+                                </video>
+                              </div>
+                            );
+                
+                          case 'mobile_image':
+                            return (
+                              <figure key={uuidv4()} className={`mobile_image`}>
+                                <Image
+                                  src={hero.heroImgUrl}
+                                  width={700}
+                                  height={700}
+                                  className="homeImg"
+                                  alt={`${hero.attribution} `}
+                                  loading="eager"
+                                  quality={60}
+                                />
+                              </figure>
+                            );
+                
+                
+                          case 'hero_image':
+                            return (
+                              <figure key={uuidv4()} className={`hero_image`}>
+                              <Image
+                                src={hero.heroImgUrl}
+                                width={700}
+                                height={700}
+                                className="homeImg"
+                                alt={`${hero.attribution} `}
+                                loading="eager"
+                                quality={60}
+                              />
+                            </figure>
+                            );
+                
+                          default:
+                            return null;
+                        }
                       })
                     
 

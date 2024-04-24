@@ -1,34 +1,50 @@
 import { PortableTextBlock } from "sanity";
 
 export type ProjectImage = {
-  _type: 'image';
+  _type: 'projectImage';
   attribution: string;
   width: string;
-  heroImgUrl: string;
+  url: string;
 };
 
 export type ProjectVideo = {
-  _type: 'file';
+  _type: 'project_video';
   attribution: string;
   width: string;
-  heroImgUrl: string;
+  url: string;
+  
 };
 
 export type ProjectText = {
-  _type: 'object';
-  Text: string;
-  heroImgUrl: string;
+  _type: 'projectText';
+  text: string;
+  url: string;
   width: string;
 };
+export type ExternalVideo = {
+  _type: 'externalVideo';
+  exVidURL: string;
+  width: string;
 
-export type ProjectAssets = ProjectImage | ProjectVideo | ProjectText;
+}
+
+export type ProjectAssets = ProjectImage | ProjectVideo | ProjectText | ExternalVideo ;
 
 export type SeoProject = {
   description: string;
   seo_image?: string; 
 };
 
+export type HeroImage = {
+  map(arg0: (hero: any) => import("react").JSX.Element | null): import("react").ReactNode | Iterable<import("react").ReactNode>;
+  _key: string;
+  _type: string;
+  heroImgUrl: string
+  attribution: string
+}
+
 export type SingleProject = {
+  map(arg0: (items: any) => import("react").JSX.Element | null): unknown;
   _id: string;
   title: string;
   slug: {
@@ -50,7 +66,7 @@ export type SingleProject = {
     creditLabel: string;
     creditName: string;
   }[];
-  projectHerovisual: (ProjectImage | ProjectVideo | ProjectText)[];
+  projectHerovisual: HeroImage;
   projectImages: ProjectAssets[];
   seo_project: SeoProject;
 };

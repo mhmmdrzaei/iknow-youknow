@@ -56,7 +56,7 @@ export async function getsettings(): Promise<Settings[]> {
   export async function getProject(slug: string): Promise<SingleProject> {
     return createClient(clientConfig).fetch(
       groq`*[_type == "singleProject"&& slug.current == $slug][0]{
-        id,
+        _id,
         title,
         "slug": slug.current,
         visible,
@@ -76,7 +76,8 @@ export async function getsettings(): Promise<Settings[]> {
           attribution,
           _type,
           width,
-         text
+         text,
+         exVidURL
         },
        "seo": seo_project{
          description,
@@ -92,8 +93,12 @@ export async function getsettings(): Promise<Settings[]> {
          
        }
         
-    }`,
+    }`, {
+      slug
+      
+    }
     )
+    
   }
   export async function getInformation(): Promise<Information[]>{
     return createClient(clientConfig).fetch(

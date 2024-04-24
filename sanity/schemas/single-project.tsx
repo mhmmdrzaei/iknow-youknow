@@ -189,15 +189,33 @@ export default {
               ]
             }, 
             {
-              title: 'Project Text', 
+              title: 'Project Text/embedded link', 
               name: 'projectText',
               type: 'object', 
               fields: [
                 {name: 'text', type: 'text'
-              , title: 'Project Text'},
+              , title: 'Project Text/embedded link'},
+              {
+                name: 'width',
+                type: 'string',
+                title: 'Width % (only number, do not include %)',
+              }
+              ]
+            },
+            {
+              title: 'External Video Links', 
+              name: 'externalVideo',
+              type: 'object', 
+              fields: [
+                {name: 'exVidURL', type: 'string'
+              , title: 'Video URL'},
+              {
+                name: 'width',
+                type: 'string',
+                title: 'Width % (only number, do not include %)',
+              }
               ]
             }
-
 
 
         ]

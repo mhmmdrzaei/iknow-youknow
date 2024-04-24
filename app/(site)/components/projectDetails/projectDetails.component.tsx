@@ -1,4 +1,4 @@
-import { SingleProject } from '@/sanity/types/Project';
+import { ProjectAssets, SingleProject } from '@/sanity/types/Project';
 import ProjectImages from "../../components/projectImages/projectImages.compoent";
 import { PortableText } from "@portabletext/react";
 
@@ -18,7 +18,8 @@ type LinkMark = {
 
 type HeaderProps = {
     project: SingleProject;
-    password?: string | null; // Accept a password prop
+    password?: string | null; 
+    images: ProjectAssets[];
 }
   
   

@@ -9,7 +9,7 @@ export type Social = {
 export type Contact = {
   _type: 'contact',
   urlLabel: string,
-  urlUrl: string,
+  urlurl: string,
 };
 
 export type Information = {

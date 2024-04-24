@@ -38,9 +38,38 @@ export default function InfoContent({ info }: HeaderProps) {
     <>
       {info.map((infoPage) => (
         <section className="pageMain singlePage" key={infoPage._id}>
-          <h2>{infoPage.pageTitle}</h2>
           <div className="singlePageContent">
           <PortableText value={infoPage.information} components={components as any} />
+          </div>
+          <div className="pageSideOffice">
+            <section className="services">
+              <h3>Services</h3>
+              <PortableText value={infoPage.services_office} components={components as any} />
+            </section>
+            <section className="contactOffice">
+              <h3>Contact</h3>
+              <div className="contactInnerContainer">
+                {infoPage.contactInfo.map((contact)=> {
+                  return (
+                    <div className="contactEach">
+                      <a href={`${contact.urlurl}`} target="_blank" > {contact.urlLabel}</a>
+                    </div>
+                  )
+                })}
+              </div>
+            </section>
+            <section className="contactOffice">
+              <h3>Follow us</h3>
+              <div className="contactInnerContainer">
+                {infoPage.socialInfo.map((social)=> {
+                  return (
+                    <div className="contactEach">
+                      <a href={`${social.socialURL}`} target="_blank" >{social.socialName}</a>
+                    </div>
+                  )
+                })}
+              </div>
+            </section>
           </div>
         </section>
       ))}
