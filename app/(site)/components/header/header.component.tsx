@@ -31,13 +31,9 @@ export default function Header({ set, projects, categories }: HeaderProps) {
                     <img src={setting.logo} />
                     </Link>
                 ))}
-                    <Link href={`#work`} className='webTitle'>
-                    <h1>Work</h1>
-                    </Link>
+                    
                     <Menu projects={projects} categories={categories}/>
-                    <Link href={`/office`} className='webTitle'>
-                    <h1>office</h1>
-                    </Link>
+                    
 
 
                         

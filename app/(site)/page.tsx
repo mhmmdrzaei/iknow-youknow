@@ -2,6 +2,7 @@ import { getsettings, getCat, getProjects } from '@/sanity/sanity.utils'
 import Header from './components/header/header.component'
 import ProjectListing from './components/projectListing/projectListing.component'
 import HeroImage from './components/heroImg/heroImg.component'
+import ScrollToBottomDetector from './components/officeScroll/officeScroll.component'
 
 import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
@@ -51,7 +52,7 @@ export default async function Home() {
         <ProjectListing projects={projects} categories={categories}/>
 
       </section>
-    
+      <ScrollToBottomDetector />
     </main>
   )
 }
