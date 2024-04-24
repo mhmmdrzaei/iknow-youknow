@@ -37,13 +37,14 @@ export const dynamic = 'force-dynamic'
 export default async function Information() {
   const settings = await getsettings()
   const info = await getInformation();
-  const projects = await getProjects()
+  const projects = await getProjects();
+  const categories = await getCat()
 
     return (
       
      
       <main className='officePage'>
-        <Header set={settings} projects={projects}/>
+        <Header set={settings} projects={projects} categories={categories}/>
         <InfoContent info={info} />
 
         

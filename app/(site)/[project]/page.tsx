@@ -55,7 +55,7 @@ export default async function Project({ params }: Props) {
         return (
 
         <main>
-          <Header set={settings} projects={projects}/>
+          <Header set={settings} projects={projects} categories={categories}/>
         <section className="pageMain">
         <div className="404">Nothing found...</div>
 
@@ -66,7 +66,7 @@ export default async function Project({ params }: Props) {
 
     return (
         <main>
-        <Header set={settings} projects={projects}/>
+        <Header set={settings} projects={projects} categories={categories}/>
         <section className="pageMain projectPage">
           <ProjectPage project={project} />
 

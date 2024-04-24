@@ -36,11 +36,13 @@ export type SeoProject = {
 };
 
 export type HeroImage = {
-  map(arg0: (hero: any) => import("react").JSX.Element | null): import("react").ReactNode | Iterable<import("react").ReactNode>;
   _key: string;
   _type: string;
-  heroImgUrl: string
-  attribution: string
+  heroImgUrl: string;
+  attribution: string;
+  map: (callbackfn: (value: any, index: number, array: any[]) => any, thisArg?: any) => any[];
+  some: (callbackfn: (value: any, index: number, array: any[]) => unknown, thisArg?: any) => boolean;
+  
 }
 
 export type SingleProject = {

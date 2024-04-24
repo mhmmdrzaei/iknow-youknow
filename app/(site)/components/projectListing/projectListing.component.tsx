@@ -17,7 +17,6 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
        .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))
       .map((category) => (
         <div key={category._id} className="singleCatListing" id={`${category.slug}`}>
-          <h2>{category.name}</h2>
           <ul>
             {projects
               .filter(
@@ -28,9 +27,9 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
               .map((project) => (
                 <li key={project._id}>
                   <Link href={`/${project.slug}`}>
-                    <section className="projectEach">
                     {project.projectHerovisual && (
-                      project.projectHerovisual.map((hero)=> {
+                    <div className={project.projectHerovisual.some(hero => hero._type === 'mobile_image') ? 'has_mobile' : 'no_mobile'}>
+                      {project.projectHerovisual.map((hero) => {
                         switch (hero._type) {
                           case 'hero_video':
                             return (
@@ -41,7 +40,7 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                                 </video>
                               </div>
                             );
-                
+
                           case 'mobile_image':
                             return (
                               <figure key={uuidv4()} className={`mobile_image`}>
@@ -56,30 +55,29 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                                 />
                               </figure>
                             );
-                
-                
+
                           case 'hero_image':
                             return (
                               <figure key={uuidv4()} className={`hero_image`}>
-                              <Image
-                                src={hero.heroImgUrl}
-                                width={700}
-                                height={700}
-                                className="homeImg"
-                                alt={`${hero.attribution} `}
-                                loading="eager"
-                                quality={60}
-                              />
-                            </figure>
+                                <Image
+                                  src={hero.heroImgUrl}
+                                  width={700}
+                                  height={700}
+                                  className="homeImg"
+                                  alt={`${hero.attribution} `}
+                                  loading="eager"
+                                  quality={60}
+                                />
+                              </figure>
                             );
-                
+
                           default:
                             return null;
                         }
-                      })
-                    
-
+                      })}
+                    </div>
                     )}
+
                     <section className="singleProjDetails">
                     <span>{project.shortProjectDescription}</span>
                     <span className='clientName'>
@@ -97,8 +95,6 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                     
                     </section>
                     
-                    
-                    </section>
                    
                     
                     </Link>

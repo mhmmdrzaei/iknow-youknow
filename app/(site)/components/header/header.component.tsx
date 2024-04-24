@@ -4,6 +4,7 @@ import {SingleProject} from '@/sanity/types/Project'
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import Menu from '../headerInteractive/headerInteractive.component';
+import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 
 
 export const dynamic = 'force-dynamic'
@@ -11,11 +12,12 @@ export const dynamic = 'force-dynamic'
 type HeaderProps = {
     set: Settings[];
     projects: SingleProject[]
+    categories: ProjectCategory[]
    
 };
 
 
-export default function Header({ set, projects }: HeaderProps) {
+export default function Header({ set, projects, categories }: HeaderProps) {
 
     return (
         <>
@@ -32,7 +34,7 @@ export default function Header({ set, projects }: HeaderProps) {
                     <Link href={`#work`} className='webTitle'>
                     <h1>Work</h1>
                     </Link>
-                    <Menu projects={projects}/>
+                    <Menu projects={projects} categories={categories}/>
                     <Link href={`/office`} className='webTitle'>
                     <h1>office</h1>
                     </Link>

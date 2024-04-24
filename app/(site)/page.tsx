@@ -42,7 +42,7 @@ export default async function Home() {
   return (
    
     <main>
-        <Header set={settings} projects={projects}/>
+        <Header set={settings} projects={projects} categories={categories}/>
 
       
       <section className="pageMain">
