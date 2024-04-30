@@ -48,12 +48,16 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
 
     return (
         <>
+        <section className="projectHeadingContainer">
         <ProjectHeading project={project}/>
         {project.projectHerovisual && (
         <ProjectHero imagesHero={project.projectHerovisual} />
 
          
         )}
+
+        </section>
+
         {project.projectdescription && (
         <section className="projectDescription">
             <PortableText value={project.projectdescription} components={components as any} />

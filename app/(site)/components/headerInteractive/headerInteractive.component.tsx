@@ -50,7 +50,7 @@ const handleCloseOffice = () => {
     return (
         <>
             <section  className='menuHeader'>
-            <Link  className={`link ${pathname === '/' ? 'active' : 'inactive'}`} href={`#work`} >
+            <Link  className={`link ${pathname === '/' ? 'active' : 'inactive'}`} href={`#categories`} >
                     Work
             </Link>
             <button className={`menuButton`} onClick={openMenu} >
@@ -62,7 +62,7 @@ const handleCloseOffice = () => {
             <button onClick={handleCloseProject} className={`link ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
 
             <button onClick={handleCloseOffice}  className={`link ${pathname === '/office' ? 'active' : 'inactive'}`}>
-                    closeOffice
+                    Close Office
             </button>
        
 
