@@ -72,7 +72,7 @@ const handleCloseOffice = () => {
                 .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))
                 .map((category) => (
                     
-                    <ul key={category._id} className="singleCatListing">
+                    <ul key={category._id} className="menuCatListing">
                         {projects
                         .filter(
                             (project) => project.categorySlug === category.slug && project.visible === true
@@ -81,9 +81,9 @@ const handleCloseOffice = () => {
                         .map((project) => (
                             <li key={project._id}>
                             <Link href={`/${project.slug}`} onClick={openMenu}>
-                                <span>{project.projectDate}</span>
+                                <span className='date'>{project.projectDate}</span>
                                 <span className="client">{project.title}</span>
-                                <span>{project.categoryName}</span>
+                                <span className='cat'>{project.categoryName}</span>
                             </Link>
                             </li>
                         ))}

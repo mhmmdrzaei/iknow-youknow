@@ -55,25 +55,30 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
 
          
         )}
-
-        </section>
-
-        {project.projectdescription && (
-        <section className="projectDescription">
-            <PortableText value={project.projectdescription} components={components as any} />
-        </section>
-        )}
-        {project.creditsProject && (
-          <section className="creditContainer">
-            {project.creditsProject.map((credit)=>(
-            <div className="credit" key={credit._key}>
-              <span>{credit.creditLabel}</span>
-              <span>{credit.creditName}</span>
-            </div>
-          ))}
+        <section className="projectdescContainer">
+          {project.projectdescription && (
+          <section className="projectDescription">
+              <PortableText value={project.projectdescription} components={components as any} />
           </section>
-          
-        )}
+          )}
+          {project.creditsProject && (
+            <section className="creditContainer">
+              {project.creditsProject.map((credit)=>(
+              <div className="credit" key={credit._key}>
+                <span>{credit.creditLabel}</span>
+                <span>{credit.creditName}</span>
+              </div>
+            ))}
+            </section>
+            
+          )}
+            
+        </section>
+
+
+        </section>
+
+      
 
         <section className="images">
         {project.projectImages && (
