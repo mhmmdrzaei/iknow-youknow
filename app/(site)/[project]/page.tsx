@@ -3,45 +3,51 @@ import { SingleProject } from '@/sanity/types/Project'
 import Header from "../components/header/header.component";
 import ProjectPage from "../components/singleProjectListing/singleProjectListing.component";
 import type { Metadata, ResolvingMetadata } from 'next'
+import Link from "next/link";
+import PrevNext from "../components/prevNext/prevNext.component";
 export const dynamic = 'force-dynamic'
 
 type Props = {
     params: { project: string }
+    sortedProjects: SingleProject[]
 }
 
 
  
-// export async function generateMetadata(
-//   { params }: Props
-// ): Promise<Metadata> {
-//   const slug = params.project;
-//   const settings = await getsettings()
-//   const project = await getProject(slug);
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+  const slug = params.project;
+  const settings = await getsettings()
+  const project = await getProject(slug);
 
-//   return {
-//     title: `${settings[0].seoTitle} | ${project.title}` ,
-//     description: settings[0].seoDescription,
+  const description = project.seo && project.seo.description ? project.seo.description : settings[0].seoDescription;
 
-//     openGraph: {
-//       title: `${settings[0].seoTitle}` ,
-//       description: settings[0].seoDescription,
-//       url: 'https://cdn.sanity.io/images/k6c4sqei/production/da9bab630e1b88eaa72e1768026f467a701b7ea3-1200x627.png',
-//       siteName: 'CHADHA RANCH',
 
-//       images: [
-//         {
-//           url: `${settings[0].seoImageUrl}`,
-//           width: 1200,
-//           height: 627,
-//         },
+  return {
+    title: `${settings[0].title} | ${project.title}` ,
+    description: description,
+
+    openGraph: {
+      title: `${settings[0].title}` ,
+      description: description,
+      url: `${settings[0].seoImageUrl}`,
+      siteName: `${settings[0].title}`,
+
+      images: [
+        {
+          url: `${settings[0].seoImageUrl}`,
+          width: 1200,
+          height: 628,
+        },
         
         
-//       ],
-//       locale: 'en_US',
-//     type: 'website',
-//     },
-//   }
-// }
+      ],
+      locale: 'en_US',
+    type: 'website',
+    },
+  }
+}
 
 export default async function Project({ params }: Props) {
     const slug = params.project;
@@ -49,7 +55,7 @@ export default async function Project({ params }: Props) {
     const settings = await getsettings();
     const categories= await getCat()
     const projects = await getProjects()
-
+    
 
     if (!project) {
         return (
@@ -69,8 +75,10 @@ export default async function Project({ params }: Props) {
         <Header set={settings} projects={projects} categories={categories}/>
         <section className="pageMain projectPage">
           <ProjectPage project={project} />
+         <PrevNext projects={projects} categories={categories} sortedProjects={[]} slug={slug} />
 
         </section>
+
         
       </main>
     )

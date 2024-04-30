@@ -42,7 +42,7 @@ const PasswordProtectedProject: React.FC<PasswordProtectedProjectProps> = ({ pro
       );
     }
 
-    return <ProjectDetails project={project} />;
+    return <ProjectDetails project={project} images={[]} imagesHero={[]} />;
   };
   
   export default PasswordProtectedProject;

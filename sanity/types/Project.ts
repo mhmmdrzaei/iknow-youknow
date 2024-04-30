@@ -49,10 +49,7 @@ export type SingleProject = {
   map(arg0: (items: any) => import("react").JSX.Element | null): unknown;
   _id: string;
   title: string;
-  slug: {
-    _type: 'slug';
-    current: string;
-  };
+  slug: string;
   sort: number;
   visible: boolean;
   password?: string;
@@ -68,7 +65,7 @@ export type SingleProject = {
     creditLabel: string;
     creditName: string;
   }[];
-  projectHerovisual: HeroImage;
+  projectHerovisual: HeroImage[];
   projectImages: ProjectAssets[];
-  seo_project: SeoProject;
+  seo: SeoProject;
 };

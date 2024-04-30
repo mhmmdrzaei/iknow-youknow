@@ -5,34 +5,33 @@ import InfoContent from '../components/infoContent/infoContent.component';
 import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
  
-// export async function generateMetadata(
-// ): Promise<Metadata> {
-//   const settings = await getsettings()
-//   return {
-//     title: `${settings[0].seoTitle} | Information` ,
-//     description: settings[0].seoDescription,
+export async function generateMetadata(
+): Promise<Metadata> {
+  const settings = await getsettings()
+  return {
+    title: `${settings[0].title} | Office` ,
+    description: settings[0].seoDescription,
 
-//     openGraph: {
-//       title: `${settings[0].seoTitle}` ,
-//       description: settings[0].seoDescription,
-      
-//       url: 'https://chadharanch.com',
-//       siteName: 'CHADHA RANCH',
+    openGraph: {
+      title: `${settings[0].title}` ,
+      description: settings[0].seoDescription,
+      url: 'https://iknow-youknow.com',
+      siteName: `${settings[0].title}`,
 
-//       images: [
-//         {
-//           url: 'https://cdn.sanity.io/images/k6c4sqei/production/da9bab630e1b88eaa72e1768026f467a701b7ea3-1200x627.png',
-//           width: 1200,
-//           height: 627,
-//         },
+      images: [
+        {
+          url: `${settings[0].seoImageUrl}` ,
+          width: 1200,
+          height: 628,
+        },
         
         
-//       ],
-//       locale: 'en_US',
-//     type: 'website',
-//     },
-//   }
-// }
+      ],
+      locale: 'en_US',
+    type: 'website',
+    },
+  }
+}
 
 export default async function Information() {
   const settings = await getsettings()

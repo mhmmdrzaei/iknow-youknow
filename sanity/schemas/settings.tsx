@@ -15,10 +15,10 @@ export default {
         
       },
 
-           {
-        title: 'Hero Image / Video',
+      {
+        title: 'Hero Image Desktop',
         name: 'herovisual',
-        description: 'a normal size file please, nothing bigger than 5mb for video',
+        description: 'a normal size file please, nothing bigger than 5mb',
         type: 'array',
         of:[
             {
@@ -36,12 +36,30 @@ export default {
                 }
               ]
             },
+            
+        ]
+      },
+      {
+        title: 'Hero Image Mobile',
+        name: 'herovisualMobile',
+        type: 'array',
+        of:[
             {
-              title: 'Hero Video',
-              name: 'hero_video',
-              type: 'file',
-  
-            }
+              title: 'Hero Image',
+              name: 'hero_image',
+              type: 'image',
+              options: {
+                hotspot: true // <-- Defaults to false
+              },
+              fields: [
+                {
+                  name: 'attribution',
+                  type: 'string',
+                  title: 'Alt',
+                }
+              ]
+            },
+            
         ]
       },
       {

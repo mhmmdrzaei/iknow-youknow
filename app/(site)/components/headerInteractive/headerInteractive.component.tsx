@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import {SingleProject} from '@/sanity/types/Project'
 import { ProjectCategory } from '@/sanity/types/ProjectCategory';
+export const dynamic = 'force-dynamic'
 
 type HeaderProps = {
     projects: SingleProject[]
@@ -15,12 +16,14 @@ type HeaderProps = {
 export default function Menu({ projects, categories }: HeaderProps) {
 
     const [activeMenu, setActiveMenu] = useState(false);
+    const [menuButtonText, setMenuButtonText] = useState('View List');
 
     // New function to explicitly open the menu
 
 
 const openMenu = () => {
     setActiveMenu(prevState => !prevState);
+    setMenuButtonText(prevText => prevText === 'View List' ? 'Close Menu' : 'View List');
 };
 // New function to explicitly close the menu
 const closeMenu = () => {
@@ -38,36 +41,38 @@ const handleCloseOffice = () => {
   const handleCloseProject = () => {
     // Get the current slug from the router object
     const currentSlug = pathname
-    // Navigate back to the home page with the current slug appended as a hash
-    router.push(`/#${currentSlug}`)
+    const projectName = currentSlug.split('/').pop();
+    // Navigate back to the home page with the project name appended as a hash
+    router.push(`/#${projectName}`);
   }
 
 
     return (
         <>
-            <section className={`menuItems ${activeMenu ? 'menuButtonActive' : ''}`}  >
+            <section  className='menuHeader'>
             <Link  className={`link ${pathname === '/' ? 'active' : 'inactive'}`} href={`#work`} >
                     Work
             </Link>
             <button className={`menuButton`} onClick={openMenu} >
-                View List
+            {menuButtonText}
             </button>
-            <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">
-            Home
-            </Link>
             <Link href={`/office`} className={`link ${pathname === '/office' ? 'inactive' : ''}`}>
                     office
             </Link>
-            <button onClick={handleCloseProject}>Close Project</button>
+            <button onClick={handleCloseProject} className={`link ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
+
             <button onClick={handleCloseOffice}  className={`link ${pathname === '/office' ? 'active' : 'inactive'}`}>
                     closeOffice
             </button>
-            <section className="menuItemsContainer">
+       
+
+            </section>
+            <section className={`menuItems ${activeMenu ? 'menuButtonActive' : ''}`} >
             {categories
                 .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))
                 .map((category) => (
                     
-                    <ul key={category._id} className="singleCatListing" id={category.slug}>
+                    <ul key={category._id} className="singleCatListing">
                         {projects
                         .filter(
                             (project) => project.categorySlug === category.slug && project.visible === true
@@ -88,9 +93,6 @@ const handleCloseOffice = () => {
            
 
 
-           
-
-            </section>
            
 
             </section>

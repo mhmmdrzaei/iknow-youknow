@@ -1,39 +1,41 @@
 import { getsettings, getCat, getProjects } from '@/sanity/sanity.utils'
 import Header from './components/header/header.component'
 import ProjectListing from './components/projectListing/projectListing.component'
-import HeroImage from './components/heroImg/heroImg.component'
 import ScrollToBottomDetector from './components/officeScroll/officeScroll.component'
+import { PortableText } from "@portabletext/react";
 
 import type { Metadata } from 'next'
-export const dynamic = 'force-dynamic'
+import HeroContainer from './components/heroContainer/heroContainer.component'
+import Link from 'next/link';
+import CategoriesHome from './components/categories/categories.component';
  
-// export async function generateMetadata(
-// ): Promise<Metadata> {
-//   const settings = await getsettings()
-//   return {
-//     title: `${settings[0].seoTitle}` ,
-//     description: settings[0].seoDescription,
+export async function generateMetadata(
+): Promise<Metadata> {
+  const settings = await getsettings()
+  return {
+    title: `${settings[0].title}` ,
+    description: settings[0].seoDescription,
 
-//     openGraph: {
-//       title: `${settings[0].seoTitle}` ,
-//       description: settings[0].seoDescription,
-//       url: 'https://chadharanch.com',
-//       siteName: 'CHADHA RANCH',
+    openGraph: {
+      title: `${settings[0].title}` ,
+      description: settings[0].seoDescription,
+      url: 'https://iknow-youknow.com',
+      siteName: `${settings[0].title}`,
 
-//       images: [
-//         {
-//           url: 'https://cdn.sanity.io/images/k6c4sqei/production/da9bab630e1b88eaa72e1768026f467a701b7ea3-1200x627.png',
-//           width: 1200,
-//           height: 627,
-//         },
+      images: [
+        {
+          url: `${settings[0].seoImageUrl}` ,
+          width: 1200,
+          height: 628,
+        },
         
         
-//       ],
-//       locale: 'en_US',
-//     type: 'website',
-//     },
-//   }
-// }
+      ],
+      locale: 'en_US',
+    type: 'website',
+    },
+  }
+}
 
 
 export default async function Home() {
@@ -43,11 +45,14 @@ export default async function Home() {
   return (
    
     <main>
-        <Header set={settings} projects={projects} categories={categories}/>
+       <HeroContainer settings={settings}/>
+       <Header set={settings} projects={projects} categories={categories}/>
 
       
       <section className="pageMain">
-      <HeroImage settings={settings}/>
+
+     
+      <CategoriesHome categories={categories} />
 
         <ProjectListing projects={projects} categories={categories}/>
 

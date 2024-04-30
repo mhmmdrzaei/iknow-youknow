@@ -5,5 +5,5 @@ export type ProjectCategory = {
   name: string;
   slug: string;
   sort: number;
-  description:PortableTextBlock[];
+  cat_desc:PortableTextBlock[];
 };

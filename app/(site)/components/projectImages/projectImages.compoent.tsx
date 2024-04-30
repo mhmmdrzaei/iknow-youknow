@@ -3,6 +3,8 @@ import { ProjectAssets } from '@/sanity/types/Project';
 import Image from 'next/image';
 import React from 'react';
 
+export const dynamic = 'force-dynamic'
+
 type HeaderProps = {
   images: ProjectAssets[];
 };
@@ -10,11 +12,14 @@ type HeaderProps = {
 export default function ProjectImages({ images }: HeaderProps) {
   return (
     <>
+    
       {images.map((items) => {
         switch (items._type) {
           case 'project_video':
             return (
-              <div key={uuidv4()} className={`videoCasting ${(items.width)} `}>
+              <div key={uuidv4()} className="projectVideo"
+              style={{width:`${items.width}%` }}
+              >
                 <video autoPlay loop muted playsInline>
                   <source src={items.url} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -24,11 +29,13 @@ export default function ProjectImages({ images }: HeaderProps) {
 
           case 'projectImage':
             return (
-              <figure key={uuidv4()} className={`castingImg ${(items.width)}  `}>
+              <figure key={uuidv4()} 
+              className="projectImg"
+              style={{width:`${items.width}%` }}>
                 <Image
                   src={items.url}
-                  width={700}
-                  height={700}
+                  width={1200}
+                  height={1200}
                   className="homeImg"
                   alt={`${items.attribution} `}
                   loading="eager"
@@ -43,7 +50,8 @@ export default function ProjectImages({ images }: HeaderProps) {
 
           case 'externalVideo':
             return (
-              <div key={uuidv4()} className={`videoCasting ${(items.width)} `}>
+              <div key={uuidv4()} className="projectVideo"
+              style={{width:`${items.width}%` }}>
                 <video autoPlay loop muted playsInline>
                   <source src={items.exVidURL} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -55,6 +63,7 @@ export default function ProjectImages({ images }: HeaderProps) {
             return null;
         }
       })}
+    
     </>
   );
 }

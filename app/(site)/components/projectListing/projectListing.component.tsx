@@ -1,14 +1,15 @@
 import { SingleProject } from '@/sanity/types/Project';
 import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 import Link from 'next/link';
-import Image from 'next/image';
-import { v4 as uuidv4 } from 'uuid';
+import ProjectHero from '../projectHero/projectHero.compoent';
+export const dynamic = 'force-dynamic'
+
 type HeaderProps = {
   projects: SingleProject[];
   categories: ProjectCategory[];
 };
 
-export const dynamic = 'force-dynamic'
+
 
 export default function ProjectListing({ projects, categories }: HeaderProps) {
   return (
@@ -16,8 +17,8 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
       {categories
        .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))
       .map((category) => (
-        <div key={category._id} className="singleCatListing" id={`${category.slug}`}>
-          <ul>
+
+          <ul key={category._id} className="singleCatListing" id={`${category.slug}`}>
             {projects
               .filter(
                 (project) =>
@@ -25,58 +26,9 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
               )
               .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity)) // Sort based on the 'sort' field
               .map((project) => (
-                <li key={project._id}>
+                <li key={project._id} id={project.slug}>
                   <Link href={`/${project.slug}`}>
-                    {project.projectHerovisual && (
-                    <div className={project.projectHerovisual.some(hero => hero._type === 'mobile_image') ? 'has_mobile' : 'no_mobile'}>
-                      {project.projectHerovisual.map((hero) => {
-                        switch (hero._type) {
-                          case 'hero_video':
-                            return (
-                              <div key={uuidv4()} className={`hero_Video`}>
-                                <video autoPlay loop muted playsInline>
-                                  <source src={hero.heroImgUrl} type="video/mp4" />
-                                  Your browser does not support the video tag.
-                                </video>
-                              </div>
-                            );
-
-                          case 'mobile_image':
-                            return (
-                              <figure key={uuidv4()} className={`mobile_image`}>
-                                <Image
-                                  src={hero.heroImgUrl}
-                                  width={700}
-                                  height={700}
-                                  className="homeImg"
-                                  alt={`${hero.attribution} `}
-                                  loading="eager"
-                                  quality={60}
-                                />
-                              </figure>
-                            );
-
-                          case 'hero_image':
-                            return (
-                              <figure key={uuidv4()} className={`hero_image`}>
-                                <Image
-                                  src={hero.heroImgUrl}
-                                  width={700}
-                                  height={700}
-                                  className="homeImg"
-                                  alt={`${hero.attribution} `}
-                                  loading="eager"
-                                  quality={60}
-                                />
-                              </figure>
-                            );
-
-                          default:
-                            return null;
-                        }
-                      })}
-                    </div>
-                    )}
+                  <ProjectHero imagesHero={project.projectHerovisual} />
 
                     <section className="singleProjDetails">
                     <span>{project.shortProjectDescription}</span>
@@ -101,7 +53,6 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                 </li>
               ))}
           </ul>
-        </div>
       ))}
     </>
   );

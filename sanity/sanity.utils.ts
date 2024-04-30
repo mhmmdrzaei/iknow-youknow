@@ -17,10 +17,14 @@ export async function getsettings(): Promise<Settings[]> {
           _key,
           _type,
           "heroImgUrl": asset->url,
-          _type
+          
+       },
+       "herovisualMobile": herovisualMobile[]{
+        _key,
+        _type,
+        "heroImgUrl": asset->url,
        },
       "logo": site_log.asset->url,
-      "seoTitle": seo.title,
       "seoDescription": seo.description,
       "seoImageUrl": seo.seo_image.asset->url,
        

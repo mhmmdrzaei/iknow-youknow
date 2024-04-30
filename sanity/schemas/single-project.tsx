@@ -234,7 +234,7 @@ export default {
       {
         title: 'SEO  Image --if different from default',
         name: 'seo_image',
-        type: 'image',
+        type: 'file',
         description: '1200 x 628 pixels'
       },
 

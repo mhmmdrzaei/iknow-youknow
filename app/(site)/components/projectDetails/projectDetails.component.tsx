@@ -1,8 +1,10 @@
-import { ProjectAssets, SingleProject } from '@/sanity/types/Project';
+import { HeroImage, ProjectAssets, SingleProject } from '@/sanity/types/Project';
 import ProjectImages from "../../components/projectImages/projectImages.compoent";
 import { PortableText } from "@portabletext/react";
 import Image from 'next/image';
 import { v4 as uuidv4 } from 'uuid';
+import ProjectHero from '../projectHero/projectHero.compoent';
+import ProjectHeading from '../projectHeading/projectHeading.component';
 
 
 export const dynamic = 'force-dynamic'
@@ -22,6 +24,7 @@ type HeaderProps = {
     project: SingleProject;
     password?: string | null; 
     images: ProjectAssets[];
+    imagesHero: HeroImage[];
 }
   
   
@@ -45,59 +48,11 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
 
     return (
         <>
-        <section className="projectHeading">
-        <h1>{project.title}</h1>
-        <button>Close Project</button>
-        </section>
+        <ProjectHeading project={project}/>
         {project.projectHerovisual && (
-          <section className={project.projectHerovisual.some(hero => hero._type === 'mobile_image') ? 'has_mobile hero_img' : 'no_mobile hero_img'}>
-            {project.projectHerovisual.map((hero) => {
-              switch (hero._type) {
-                case 'hero_video':
-                  return (
-                    <div key={uuidv4()} className={`hero_Video`}>
-                      <video autoPlay loop muted playsInline>
-                        <source src={hero.heroImgUrl} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  );
+        <ProjectHero imagesHero={project.projectHerovisual} />
 
-                case 'mobile_image':
-                  return (
-                    <figure key={uuidv4()} className={`mobile_image`}>
-                      <Image
-                        src={hero.heroImgUrl}
-                        width={700}
-                        height={700}
-                        className="homeImg"
-                        alt={`${hero.attribution} `}
-                        loading="eager"
-                        quality={60}
-                      />
-                    </figure>
-                  );
-
-                case 'hero_image':
-                  return (
-                    <figure key={uuidv4()} className={`hero_image`}>
-                      <Image
-                        src={hero.heroImgUrl}
-                        width={700}
-                        height={700}
-                        className="homeImg"
-                        alt={`${hero.attribution} `}
-                        loading="eager"
-                        quality={60}
-                      />
-                    </figure>
-                  );
-
-                default:
-                  return null;
-              }
-            })}
-          </section>
+         
         )}
         {project.projectdescription && (
         <section className="projectDescription">
@@ -117,10 +72,11 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
         )}
 
         <section className="images">
+        {project.projectImages && (
         
         <ProjectImages images={project.projectImages} />
         
-
+        )}
 
         </section>
 
