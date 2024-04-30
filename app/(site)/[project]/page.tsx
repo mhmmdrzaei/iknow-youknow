@@ -21,7 +21,7 @@ export async function generateMetadata(
   const settings = await getsettings()
   const project = await getProject(slug);
 
-  const description = project.seo && project.seo.description ? project.seo.description : settings[0].seoDescription;
+  const description = project.seo.description ? project.seo.description : settings[0].seoDescription;
 
 
   return {
