@@ -24,7 +24,7 @@ const ScrollToBottomDetector = () => {
     }
   }, [router])
 
-  return <div id="scrollToBottomDetector" style={{ height: '100vh', position: 'absolute', bottom: '40px', margin:'50px 0 0' }} />
+  return <div id="scrollToBottomDetector section" style={{ height: '1vh', width: '100%', position: 'relative', bottom: '4px', margin:'50px 0 0' }} />
 }
 
 export default ScrollToBottomDetector

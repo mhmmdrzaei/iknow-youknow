@@ -24,7 +24,7 @@ export default function Header({ set, projects, categories }: HeaderProps) {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY >= window.innerHeight) {
+            if (window.scrollY >= window.innerHeight +- 1) {
                 setIsActive(true);
             } else {
                 setIsActive(false);
@@ -44,7 +44,7 @@ export default function Header({ set, projects, categories }: HeaderProps) {
              
                 <>
     
-                <section className={`headingContainer ${isActive ? 'headingfixed' : ''}`} key={uuidv4()}>
+                <section className={`headingContainer ${isActive ? 'headingfixed' : ''}`}  key={uuidv4()}>
                 {set.map((setting) => ( 
                     <Link href={`/`} className='logoLink' key={setting._id}>
                     <img src={setting.logo} />

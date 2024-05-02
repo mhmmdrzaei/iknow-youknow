@@ -10,19 +10,26 @@ type ScrollSectionProps = {
 };
 
 const ScrollSection = ({ children }: ScrollSectionProps) => {
-    
+
   useEffect(() => {
-    gsap.utils.toArray('.section').forEach(section => {
+    gsap.utils.toArray('.section').forEach((section: any) => {
+      const sectionHeight = section.clientHeight; // Get the height of the section 
       ScrollTrigger.create({
         trigger: section as Element, // Type assertion for section
-        start: 'top top',
+        start: 'bottom bottom',
+        end: `+=${sectionHeight}`,
+        snap: 1,
+        scrub: 1,
+        
+        pinSpacing: false,
         pin: true,
-        markers: true,
-        scrub: .1,
-        end: 'bottom top',
       });
     });
+
+
   }, []);
+
+  
 
   return <>{children}</>;
 };

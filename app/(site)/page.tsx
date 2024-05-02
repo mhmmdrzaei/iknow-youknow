@@ -46,11 +46,11 @@ export default async function Home() {
       
        <HeroContainer settings={settings}/>
        <Header set={settings} projects={projects} categories={categories}/>
+       
 
       
       <section className="pageMain">
-
-     
+    
       <CategoriesHome categories={categories} />
 
         <ProjectListing projects={projects} categories={categories}/>
