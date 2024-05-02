@@ -59,7 +59,7 @@ const handleCloseOffice = () => {
             <Link href={`/office`} className={`link ${pathname === '/office' ? 'inactive' : ''}`}>
                     office
             </Link>
-            <button onClick={handleCloseProject} className={`link ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
+            <button onClick={handleCloseProject} className={`close-project ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
 
             <button onClick={handleCloseOffice}  className={`link ${pathname === '/office' ? 'active' : 'inactive'}`}>
                     Close Office

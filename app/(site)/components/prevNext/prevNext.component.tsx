@@ -1,15 +1,35 @@
-import { SingleProject } from '@/sanity/types/Project'
+"use client"
+import { SingleProject } from '@/sanity/types/Project';
 import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
 type HeaderProps = {
     projects: SingleProject[];
-    sortedProjects: SingleProject[]
-    categories: ProjectCategory[]
+    sortedProjects: SingleProject[];
+    categories: ProjectCategory[];
     slug: string;
-    
 };
 
 export default function PrevNext({ projects, categories, slug }: HeaderProps) {
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 630);
+        };
+
+        handleResize(); // Check initial screen width
+        window.addEventListener('resize', handleResize); // Add event listener for resize
+
+        return () => {
+            window.removeEventListener('resize', handleResize); // Cleanup the event listener
+        };
+    }, []);
+
+    if (!isSmallScreen) {
+        return null; // If not a small screen, don't render anything
+    }
 
     let sortedProjects: SingleProject[] = [];
     categories.forEach(category => {
@@ -38,17 +58,16 @@ export default function PrevNext({ projects, categories, slug }: HeaderProps) {
 
     return (
         <div className="pagination">
-        {previousSlug && (
-            <Link href={`/${previousSlug}`}>
-                Previous
-            </Link>
-        )}
-        {nextSlug && (
-            <Link href={`/${nextSlug}`}>
-                Next
-            </Link>
-        )}
-</div>
-      
+            {previousSlug && (
+                <Link href={`/${previousSlug}`}>
+                    Previous
+                </Link>
+            )}
+            {nextSlug && (
+                <Link href={`/${nextSlug}`}>
+                    Next
+                </Link>
+            )}
+        </div>
     );
 }

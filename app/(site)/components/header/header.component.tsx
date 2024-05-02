@@ -46,7 +46,7 @@ export default function Header({ set, projects, categories }: HeaderProps) {
     
                 <section className={`headingContainer ${isActive ? 'headingfixed' : ''}`} key={uuidv4()}>
                 {set.map((setting) => ( 
-                    <Link href={`/`} className='logoLink'>
+                    <Link href={`/`} className='logoLink' key={setting._id}>
                     <img src={setting.logo} />
                     </Link>
                 ))}

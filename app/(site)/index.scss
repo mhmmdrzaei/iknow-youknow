@@ -57,6 +57,7 @@ button {
     background: transparent;
     border: none;
     padding: 0;
+    font-size: 14.5px;
 }
 
 h1 {
@@ -327,7 +328,15 @@ p, a {
             object-fit: cover;
         }
     }
+    .section {
+        height: 100vh;
+        position: sticky;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translate(0, 0) !important;
 
+      }
 // Project page 
 .projectHeadingContainer {
     position: relative;
@@ -371,6 +380,7 @@ p, a {
 .images {
     width: calc(100% - 80px);
     padding: 15px 40px;
+    margin-bottom: 80px;
     figure,.projectVideo {
         margin: 0 auto;
         width: 100%;
@@ -404,6 +414,25 @@ p, a {
         }
     }
    
+}
+.pagination {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 80px);
+    border-top: 1px solid black;
+    padding: 0px 40px;
+    background: white;
+    @extend .flex;
+    a {
+        width: calc(50% - 2px);
+        display: block;
+        padding: 15px 0;
+    }
+    a:nth-child(2) {
+        border-left: 1px solid black;
+        text-align: right;
+    }
 }
 
 //office page 
@@ -460,9 +489,45 @@ p, a {
       top: 0;
     }
   }
-@media(max-width: 400px){
+// password protected
+.passwordProtected {
+    transform: translate(50%, 50%);
+    text-align: center;
+    h2 {
+        text-transform: uppercase;
+    }
+    button {
+        text-transform: uppercase;
+        border: 1px solid black;
+        padding: 5px 10px;
+    }
+    input {
+        border: 1px solid black;
+        padding: 5px 0;
+        margin-right: 5px;
+    }
+}
+@media(max-width: 630px){
     
-
+.projectHeading {
+    position: fixed;
+    bottom: 47px;
+    /* height: 47px; */
+    top: initial;
+    text-align: center;
+    border-top: 1px solid black;
+    h1 {
+        display: none;
+    }
+    button {
+        width: 100%;
+    }
+}
+.menuHeader {
+    .close-project {
+        display: none;
+    }
+}
 }
 
 

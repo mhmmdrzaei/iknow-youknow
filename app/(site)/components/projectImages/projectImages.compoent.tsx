@@ -47,7 +47,7 @@ export default function ProjectImages({ images }: HeaderProps) {
           case 'projectText':
             const markup = { __html: `${items.text}` };
           return (
-            <div className="videotextContainer">
+            <div  key={uuidv4()} className="videotextContainer">
               <div className='embedVideoContent' key={uuidv4()} dangerouslySetInnerHTML={markup} />
             </div>
           )

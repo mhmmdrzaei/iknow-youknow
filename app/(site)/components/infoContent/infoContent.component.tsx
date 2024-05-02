@@ -1,5 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import {Information} from '@/sanity/types/Information'
+import { v4 as uuidv4 } from 'uuid';
 
 export const dynamic = 'force-dynamic'
 
@@ -51,7 +52,7 @@ export default function InfoContent({ info }: HeaderProps) {
               <div className="contactInnerContainer">
                 {infoPage.contactInfo.map((contact)=> {
                   return (
-                    <div className="contactEach">
+                    <div className="contactEach" key={uuidv4()}>
                       <a href={`${contact.urlurl}`} target="_blank" > {contact.urlLabel}</a>
                     </div>
                   )
@@ -63,7 +64,7 @@ export default function InfoContent({ info }: HeaderProps) {
               <div className="contactInnerContainer">
                 {infoPage.socialInfo.map((social)=> {
                   return (
-                    <div className="contactEach">
+                    <div className="contactEach" key={uuidv4()}>
                       <a href={`${social.socialURL}`} target="_blank" >{social.socialName}</a>
                     </div>
                   )

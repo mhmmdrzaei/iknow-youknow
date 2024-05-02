@@ -1,10 +1,10 @@
 "use client"
 import { useState, useEffect } from 'react';
-import HeroImage from '../heroImg/heroImg.component'; // Import HeroImage component
-import HeroImageMobile from '../heroImgMobile/heroImgMobile.component'; // Import HeroImageMobile component
+import HeroImage from '../heroImg/heroImg.component'; 
+import HeroImageMobile from '../heroImgMobile/heroImgMobile.component'; 
 import { Settings } from "@/sanity/types/Settings";
-import Link from 'next/link';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 type HeroContainerProps = {
     settings: Settings[];
 };
@@ -40,10 +40,21 @@ export default function HeroContainer({ settings }: HeroContainerProps) {
 
 
     return (
+        <Swiper
+        spaceBetween={100}
+        slidesPerView={1}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        <SwiperSlide>
         <section className='heroSection' onClick={handleClick} >
             <HeroComponent settings={settings}  />;
             <h1>I Know You Know</h1>
         </section>
+
+        </SwiperSlide>
+
+        </Swiper>
     )
     
 

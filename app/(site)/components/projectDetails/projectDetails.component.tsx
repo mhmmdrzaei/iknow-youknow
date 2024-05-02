@@ -57,7 +57,7 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
         )}
         <section className="projectdescContainer">
           {project.projectdescription && (
-          <section className="projectDescription">
+          <section className="projectDescription" key={uuidv4()}>
               <PortableText value={project.projectdescription} components={components as any} />
           </section>
           )}

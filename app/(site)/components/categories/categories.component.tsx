@@ -19,7 +19,7 @@ const CategoriesHome = ({ categories }: HeaderProps) => {
     return (
       <section className="categoriesContainer" id="categories">
         {categories.map((category) => (
-          <section key={category.slug} className="categoryEach" onClick={() => handleClick(category.slug)}>
+          <section key={category._id} className="categoryEach" onClick={() => handleClick(category.slug)}>
             <div className="categoryName">
               <h2>{category.name}</h2>
             </div>

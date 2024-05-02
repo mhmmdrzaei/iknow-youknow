@@ -10,7 +10,7 @@ const ScrollToBottomDetector = () => {
     function handleScroll() {
       const windowHeight = window.innerHeight
       const documentHeight = document.documentElement.scrollHeight
-      const scrollTop = window.scrollY || document.documentElement.scrollTop
+      const scrollTop = (window.scrollY || document.documentElement.scrollTop) + 50
 
       if (windowHeight + scrollTop >= documentHeight) {
         router.push('/office')
@@ -24,7 +24,7 @@ const ScrollToBottomDetector = () => {
     }
   }, [router])
 
-  return <div id="scrollToBottomDetector" style={{ height: '1px', position: 'absolute', bottom: '0' }} />
+  return <div id="scrollToBottomDetector" style={{ height: '100vh', position: 'absolute', bottom: '40px', margin:'50px 0 0' }} />
 }
 
 export default ScrollToBottomDetector
