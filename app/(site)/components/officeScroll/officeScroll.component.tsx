@@ -1,30 +1,48 @@
 "use client"
 import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-
+import { useRouter,usePathname } from 'next/navigation'
 
 const ScrollToBottomDetector = () => {
-  const router = useRouter()
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    function handleScroll() {
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
-      const scrollTop = (window.scrollY || document.documentElement.scrollTop) + 50
+    const hasDisplayed = localStorage.getItem('hasDisplayed');
 
-      if (windowHeight + scrollTop >= documentHeight) {
-        router.push('/office')
+    function handleScroll() {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = (window.scrollY || document.documentElement.scrollTop) + 50;
+
+      if (!hasDisplayed && windowHeight + scrollTop >= documentHeight && pathname !== '/office') {
+        router.push('/office');
+        localStorage.setItem('hasDisplayed', 'true');
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    if (!hasDisplayed) {
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [router, pathname]);
+
+  // Remove the flag from local storage when the user closes the browser window or navigates away from the page
+  useEffect(() => {
+    const cleanupLocalStorage = () => {
+      localStorage.removeItem('hasDisplayed');
+    };
+
+    window.addEventListener('beforeunload', cleanupLocalStorage);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [router])
+      window.removeEventListener('beforeunload', cleanupLocalStorage);
+    };
+  }, []);
 
-  return <div id="scrollToBottomDetector section" style={{ height: '1vh', width: '100%', position: 'relative', bottom: '4px', margin:'50px 0 0' }} />
-}
+  return null; // Render nothing if the component shouldn't be displayed
+};
 
-export default ScrollToBottomDetector
+export default ScrollToBottomDetector;

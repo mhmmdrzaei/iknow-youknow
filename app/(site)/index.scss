@@ -171,7 +171,7 @@ p, a {
         background: white;
         top: 61px;
         border-left: 1px solid black;
-        transition: transform ease .3s;
+        transition: transform ease .1s;
         transform: translateX(100%);
         display: none;
         right: 0;
@@ -221,11 +221,12 @@ p, a {
     }
     .headingfixed {
         opacity: 1;
-        
-        transition: all .5s ease;
-        animation-duration: .5s;
+        animation-duration: .1s;
         animation-name: slidein;
        
+    }
+    .officeMenu {
+        opacity: 1;
     }
 
     @keyframes slidein {
@@ -243,13 +244,12 @@ p, a {
 .categoriesContainer {
     width: 100%;
     height: 100vh;
-    
+    background: white;
 
     .categoryEach {
        height: calc(33.33vh - 20px);
        border-bottom: 1px solid black;
        width: 100%;
-       background: white;
        @extend .flex;
        justify-content: space-between;
        cursor: pointer;

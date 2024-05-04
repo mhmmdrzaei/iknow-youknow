@@ -1,6 +1,7 @@
 
 "use client"
 import {Settings} from '@/sanity/types/Settings'
+import { usePathname } from 'next/navigation'
 import {SingleProject} from '@/sanity/types/Project'
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
@@ -19,7 +20,9 @@ type HeaderProps = {
 };
 
 
+
 export default function Header({ set, projects, categories }: HeaderProps) {
+    const pathname = usePathname()
     const [isActive, setIsActive] = useState<boolean>(false);
 
     useEffect(() => {
@@ -44,7 +47,7 @@ export default function Header({ set, projects, categories }: HeaderProps) {
              
                 <>
     
-                <section className={`headingContainer ${isActive ? 'headingfixed' : ''}`}  key={uuidv4()}>
+                <section className={`headingContainer ${isActive ? 'headingfixed' : ''} ${pathname === '/office' ? 'officeMenu' : ''}`}  key={uuidv4()}>
                 {set.map((setting) => ( 
                     <Link href={`/`} className='logoLink' key={setting._id}>
                     <img src={setting.logo} />

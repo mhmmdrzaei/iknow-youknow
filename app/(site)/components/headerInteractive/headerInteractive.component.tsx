@@ -1,7 +1,7 @@
 "use client"
  
 import { usePathname, useRouter } from 'next/navigation'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {SingleProject} from '@/sanity/types/Project'
 import { ProjectCategory } from '@/sanity/types/ProjectCategory';
@@ -33,18 +33,26 @@ const pathname = usePathname()
 
 const router = useRouter()
 
+
 const handleCloseOffice = () => {
-    // Go back to the previous page location
-    router.back()
-  }
+
+    router.back();
+    
+  };
 
   const handleCloseProject = () => {
     // Get the current slug from the router object
     const currentSlug = pathname
     const projectName = currentSlug.split('/').pop();
-    // Navigate back to the home page with the project name appended as a hash
-    router.push(`/#${projectName}`);
+    router.push('/');
+
+        const element = document.getElementById(projectName);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
   }
+
+
 
 
     return (
