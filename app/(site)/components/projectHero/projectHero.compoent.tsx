@@ -3,6 +3,7 @@ import { HeroImage } from '@/sanity/types/Project';
 import Image from 'next/image';
 import React from 'react';
 export const dynamic = 'force-dynamic'
+import ScrollSection from '../scroll/scroll.component';
 
 type HeaderProps = {
   imagesHero: HeroImage[];
@@ -11,44 +12,51 @@ type HeaderProps = {
 export default function ProjectHero({ imagesHero }: HeaderProps) {
   return (
     <section className={imagesHero.some(hero => hero._type === 'mobile_image') ? 'has_mobile hero_img' : 'no_mobile hero_img'}>
+    
     {imagesHero.map((hero) => {
       switch (hero._type) {
         case 'hero_video':
           return (
-            <div key={uuidv4()} className={`hero_Video`}>
+            <ScrollSection>
+            <div key={uuidv4()} className={`hero_Video section`}>
               <video autoPlay loop muted playsInline>
                 <source src={hero.heroImgUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
+          </ScrollSection>
           );
 
         case 'mobile_image':
           return (
+            <ScrollSection>
               <Image
               key={uuidv4()}
                 src={hero.heroImgUrl}
                 width={500}
                 height={500}
-                className="homeImgmmobil"
+                className="homeImgmmobil section"
                 alt={`${hero.attribution} `}
                 loading="eager"
                 quality={60}
               />
+              </ScrollSection>
           );
 
         case 'hero_image':
           return (
+            <ScrollSection>
               <Image
                key={uuidv4()}
                 src={hero.heroImgUrl}
                 width={2000}
                 height={2000}
-                className="homeImg"
+                className="homeImg section"
                 alt={`${hero.attribution} `}
                 loading="eager"
                 quality={60}
               />
+            </ScrollSection>
           );
 
         default:

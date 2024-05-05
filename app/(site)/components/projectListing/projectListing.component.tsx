@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ProjectHero from '../projectHero/projectHero.compoent';
 import ScrollSection from '../scroll/scroll.component';
 export const dynamic = 'force-dynamic'
-
+import { v4 as uuidv4 } from 'uuid';
 
 type HeaderProps = {
   projects: SingleProject[];
@@ -20,7 +20,7 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
        .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))
       .map((category) => (
 
-          <ul key={category._id} className="singleCatListing" id={`${category.slug}`}>
+          <ul key={uuidv4()} className="singleCatListing" id={`${category.slug}`}>
             {projects
               .filter(
                 (project) =>
@@ -29,7 +29,7 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
               .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity)) // Sort based on the 'sort' field
               .map((project) => (
                 <ScrollSection>
-                <li key={project._id} id={project.slug} className='section'>
+                <li key={uuidv4()} id={project.slug} className='section'>
                   <Link href={`/${project.slug}`}>
                   <ProjectHero imagesHero={project.projectHerovisual} />
 

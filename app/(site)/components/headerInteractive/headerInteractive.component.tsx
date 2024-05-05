@@ -42,15 +42,22 @@ const handleCloseOffice = () => {
 
   const handleCloseProject = () => {
     // Get the current slug from the router object
-    const currentSlug = pathname
-    const projectName = currentSlug.split('/').pop();
+    const currentSlug = pathname;
+    const projectName = currentSlug.split('/').pop() || '';
+  
+    // Navigate to the home page
     router.push('/');
-
-        const element = document.getElementById(projectName);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-  }
+  
+    // Scroll to the element after a brief delay
+    setTimeout(() => {
+      // Find the element with the ID of projectName
+      const element = document.getElementById(projectName);
+      if (element) {
+        // Scroll to the element
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100); // Adjust the delay time as needed
+  };
 
 
 

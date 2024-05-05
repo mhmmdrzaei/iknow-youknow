@@ -49,7 +49,7 @@ export default function Header({ set, projects, categories }: HeaderProps) {
     
                 <section className={`headingContainer ${isActive ? 'headingfixed' : ''} ${pathname === '/office' ? 'officeMenu' : ''}`}  key={uuidv4()}>
                 {set.map((setting) => ( 
-                    <Link href={`/`} className='logoLink' key={setting._id}>
+                    <Link href={`/`} className='logoLink' key={uuidv4()}>
                     <img src={setting.logo} />
                     </Link>
                 ))}

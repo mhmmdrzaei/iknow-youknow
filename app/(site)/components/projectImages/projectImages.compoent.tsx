@@ -17,21 +17,26 @@ export default function ProjectImages({ images }: HeaderProps) {
         switch (items._type) {
           case 'project_video':
             return (
+              <div className="section">
               <div key={uuidv4()} className="projectVideo"
-              style={{width:`${items.width}%` }}
+              style={{maxWidth:`${items.width}%` }}
               >
                 <video autoPlay loop muted playsInline>
                   <source src={items.url} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
+
+              </div>
+
             );
 
           case 'projectImage':
             return (
-              <figure key={uuidv4()} 
+              <div className="section">
+                <figure key={uuidv4()} 
               className="projectImg"
-              style={{width:`${items.width}%` }}>
+              style={{maxWidth:`${items.width}%` }}>
                 <Image
                   src={items.url}
                   width={1200}
@@ -42,25 +47,35 @@ export default function ProjectImages({ images }: HeaderProps) {
                   quality={60}
                 />
               </figure>
+
+              </div>
+              
             );
 
           case 'projectText':
             const markup = { __html: `${items.text}` };
           return (
+            <div className="section">
             <div  key={uuidv4()} className="videotextContainer">
               <div className='embedVideoContent' key={uuidv4()} dangerouslySetInnerHTML={markup} />
             </div>
+            </div>
+
           )
 
           case 'externalVideo':
             return (
-              <div key={uuidv4()} className="projectVideo"
-              style={{width:`${items.width}%` }}>
-                <video autoPlay loop muted playsInline>
-                  <source src={items.exVidURL} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+              <div className="section">
+                <div key={uuidv4()} className="projectVideo"
+                style={{maxWidth:`${items.width}%` }}>
+                  <video autoPlay loop muted playsInline>
+                    <source src={items.exVidURL} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
               </div>
+
             );
 
           default:

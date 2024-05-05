@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { v4 as uuidv4 } from 'uuid';
 import ProjectHero from '../projectHero/projectHero.compoent';
 import ProjectHeading from '../projectHeading/projectHeading.component';
-
+import ScrollSection from '../scroll/scroll.component';
 
 export const dynamic = 'force-dynamic'
 
@@ -51,10 +51,13 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
         <section className="projectHeadingContainer">
         <ProjectHeading project={project}/>
         {project.projectHerovisual && (
-        <ProjectHero imagesHero={project.projectHerovisual} />
+          <ProjectHero imagesHero={project.projectHerovisual} />
+        
 
          
         )}
+        <ScrollSection>
+        <div className="section">
         <section className="projectdescContainer">
           {project.projectdescription && (
           <section className="projectDescription" key={uuidv4()}>
@@ -74,6 +77,12 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
           )}
             
         </section>
+
+        </div>
+
+
+        </ScrollSection>
+
 
 
         </section>

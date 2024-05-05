@@ -348,6 +348,7 @@ p, a {
         justify-content: center;
         align-items: center;
         transform: translate(0, 0) !important;
+        background: white;
 
       }
 // Project page 
@@ -396,14 +397,17 @@ p, a {
     margin-bottom: 80px;
     figure,.projectVideo {
         margin: 0 auto;
-        width: 100%;
+        
         img {
-            width: 100%;
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
         }
     }
     .projectVideo {
         video {
             max-width: 100%;
+            max-height: 80vh;
         }
     }
     .videotextContainer {
@@ -504,7 +508,6 @@ p, a {
   }
 // password protected
 .passwordProtected {
-    transform: translate(50%, 50%);
     text-align: center;
     h2 {
         text-transform: uppercase;
@@ -519,6 +522,9 @@ p, a {
         padding: 5px 0;
         margin-right: 5px;
     }
+}
+.projectPage {
+    width: 100%;
 }
 @media(max-width: 630px){
     

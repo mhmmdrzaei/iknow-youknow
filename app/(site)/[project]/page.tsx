@@ -50,7 +50,7 @@ export default async function Project({ params }: Props) {
     
     if (!project) {
         return (
-          <main>
+          <main key={uuidv4()}>
             <Header set={settings} projects={projects} categories={categories}/>
             <section className="pageMain" key={uuidv4()}>
               <div className="404">Nothing found...</div>

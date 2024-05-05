@@ -14,14 +14,17 @@ export default function ProjectHeading({ project}: HeaderProps) {
 
 const router = useRouter()
 
-
   const handleCloseProject = () => {
-    // Get the current slug from the router object
     const projectName = project.slug
-    // Navigate back to the home page with the project name appended as a hash
-    router.push(`/#${projectName}`);
-  }
-
+    router.push('/');
+  
+    setTimeout(() => {
+      const element = document.getElementById(projectName);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100); 
+  };
 
     return (
         <section className="projectHeading" key={project._id}>
