@@ -49,7 +49,7 @@ export default async function Home() {
        
 
       
-      <section className="pageMain">
+      <section className="pageMain homepage">
     
       <CategoriesHome categories={categories} />
 
@@ -57,6 +57,7 @@ export default async function Home() {
 
       </section>
       <ScrollToBottomDetector />
+
     </main>
   )
 }

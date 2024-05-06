@@ -12,7 +12,7 @@ const ScrollToBottomDetector = () => {
     function handleScroll() {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      const scrollTop = (window.scrollY || document.documentElement.scrollTop) + 50;
+      const scrollTop = (window.scrollY || document.documentElement.scrollTop)  ;
 
       if (!hasDisplayed && windowHeight + scrollTop >= documentHeight && pathname !== '/office') {
         router.push('/office');

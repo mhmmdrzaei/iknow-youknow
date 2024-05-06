@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ProjectDetails from '../projectDetails/projectDetails.component';
 import { SingleProject } from '@/sanity/types/Project';
+import ProjectHeading from '../projectHeading/projectHeading.component';
 
 export const dynamic = 'force-dynamic'
 
@@ -29,6 +30,8 @@ const PasswordProtectedProject: React.FC<PasswordProtectedProjectProps> = ({ pro
     if (project.password && !showDetails) {
 
       return (
+        <>
+        <ProjectHeading project={project}/>
         <section className='passwordProtected'>
           <h2>Password Protected</h2>
           <p>Please enter the password to access this content:</p>
@@ -39,6 +42,8 @@ const PasswordProtectedProject: React.FC<PasswordProtectedProjectProps> = ({ pro
           />
           <button onClick={handlePasswordSubmit}>Submit</button>
         </section>
+        </>
+
       );
     }
 

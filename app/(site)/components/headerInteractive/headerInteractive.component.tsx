@@ -65,13 +65,13 @@ const handleCloseOffice = () => {
     return (
         <>
             <section  className='menuHeader'>
-            <Link  className={`link ${pathname === '/' ? 'active' : 'inactive'}`} href={`#categories`} >
+            <Link  className={`worksLink ${pathname === '/' ? 'active' : 'inactive'}`} href={`#categories`} >
                     Work
             </Link>
             <button className={`menuButton`} onClick={openMenu} >
             {menuButtonText}
             </button>
-            <Link href={`/office`} className={`link ${pathname === '/office' ? 'inactive' : ''}`}>
+            <Link href={`/office`} className={`officeLink ${pathname === '/office' ? 'inactive' : ''}`}>
                     office
             </Link>
             <button onClick={handleCloseProject} className={`close-project ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>

@@ -32,6 +32,7 @@ html {
 }
 body {
     margin: 0 !important;
+    overflow-x: hidden;
 }
 img {
   max-width: 100%;
@@ -85,7 +86,9 @@ body {
     
     
 }
-p, a {
+.contain {
+    width: calc(100% - 80px);
+    padding: 15px 40px;
 }
 
 
@@ -124,9 +127,8 @@ p, a {
 // heading {
     .headingContainer {
         @extend .flex;
+        @extend .contain;
         justify-content: space-between;
-        width: calc(100% - 80px);
-        padding: 15px 40px;
         height: 30px;
         background: white;
         border-bottom: 1px solid black;
@@ -171,9 +173,8 @@ p, a {
         background: white;
         top: 61px;
         border-left: 1px solid black;
-        transition: transform ease .1s;
+        transition: transform ease .5s;
         transform: translateX(100%);
-        display: none;
         right: 0;
         ul {
             list-style: none;
@@ -216,7 +217,6 @@ p, a {
     }
     .menuButtonActive {
         transform: translateX(0);
-        display: block;
         transition: all 1s ease;
     }
     .headingfixed {
@@ -296,11 +296,10 @@ p, a {
             height: 100vh;
             position: relative;
             .singleProjDetails {
+                @extend .contain;
                 position: absolute;
-                width: 100%;
                 background: white;
                 bottom: 0;
-                width: calc(100% - 80px);
                 min-height: 30px;
                 padding: 20px 40px;
                 @extend .flex;
@@ -322,6 +321,9 @@ p, a {
 .has_mobile {
     .homeImgmmobil {
         display: none;
+    }
+    .hero_Video, .homeImg {
+        display: block;
     }
 }
 .hero_img {
@@ -359,8 +361,7 @@ p, a {
 
 .projectHeading {
     border-bottom: 1px solid black;
-    width: calc(100% - 80px);
-    padding: 15px 40px;
+    @extend .contain;
     @extend .flex;
     position: sticky;
     z-index: 3;
@@ -381,9 +382,8 @@ p, a {
     font-size: 1.8vw;
 }
 .creditContainer {
-    width: calc(100% - 80px);
+    @extend .contain;
     margin: 0 auto;
-    padding: 15px 40px;
     .credit {
         margin-bottom: 10px;
         span {
@@ -392,8 +392,7 @@ p, a {
     }
 }
 .images {
-    width: calc(100% - 80px);
-    padding: 15px 40px;
+    @extend .contain;
     margin-bottom: 80px;
     figure,.projectVideo {
         margin: 0 auto;
@@ -432,27 +431,12 @@ p, a {
     }
    
 }
-.pagination {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: calc(100% - 80px);
-    border-top: 1px solid black;
-    padding: 0px 40px;
-    background: white;
-    @extend .flex;
-    a {
-        width: calc(50% - 2px);
-        display: block;
-        padding: 15px 0;
-    }
-    a:nth-child(2) {
-        border-left: 1px solid black;
-        text-align: right;
-    }
-}
+
 
 //office page 
+.homepage {
+    margin-bottom: 100px;
+}
 .officePage {
     .pageMain {
         animation: slideup 1s ease-in-out;
@@ -509,6 +493,7 @@ p, a {
 // password protected
 .passwordProtected {
     text-align: center;
+    margin-top: 100px;
     h2 {
         text-transform: uppercase;
     }
@@ -527,19 +512,35 @@ p, a {
     width: 100%;
 }
 @media(max-width: 630px){
+.contain {
+    width: calc(100% - 40px);
+    padding: 15px 20px;
+}
+.headingContainer {
+    height: 54px;
+    .logoLink {
+        width: 100%;
+        max-width: inherit;
+    }
+    .menuHeader {
+        width: 100%;
+        margin-top: 10px;
+
+        .worksLink {
+            text-align: left;
+        }
+        .officeLink {
+            text-align: right;
+        }
+
+    }
+
+}
     
 .projectHeading {
-    position: fixed;
-    bottom: 47px;
-    /* height: 47px; */
-    top: initial;
-    text-align: center;
-    border-top: 1px solid black;
-    h1 {
-        display: none;
-    }
+    height: 54px;
     button {
-        width: 100%;
+       display: none;
     }
 }
 .menuHeader {
@@ -547,6 +548,128 @@ p, a {
         display: none;
     }
 }
+.menuItems {
+    width: 100%;
+    border-left: 0;
+    top: 85px;
+    ul li a {
+        display: block;
+        padding: 15px 10px;
+        min-height: 90px;
+        span {
+            display: block;
+            width: 100%;
+            margin-left: 10px;
+        
+        }
+    }
+
 }
+//categories 
+.categoriesContainer {
+    .categoryEach {
+        height: calc(33.33vh - 29px);
+        .categoryName {
+            width: 100%;
+            border-right: 0;
+            h2 {
+                font-size: 80px;
+            }
+        }
+        .categoryDescription {
+            display: none;
+        }
+    }
+    .categoryEach:nth-child(1) {
+        margin-top: 84px;
+    }
+}
+
+//single project 
+.singleCatListing li a {
+    .singleProjDetails {
+        padding: 15px 0;
+        width: 100%;
+        span:nth-child(1) {
+            width: 100%;
+            padding: 0 20px 15px;
+            border-bottom: 1px solid black;
+            margin-bottom: 15px;
+        }
+        .clientName {
+            padding-left: 20px;
+            
+        }
+        .category {
+            padding-right: 20px;
+        }
+
+    }
+
+}
+.has_mobile {
+    .hero_Video, .homeImg {
+        display: none;
+    }
+    .homeImgmmobil {
+        display: block;
+    }
+}
+.projectDescription {
+    font-size: 18px;
+    width: calc(100% - 40px);
+    padding: 20px;
+    margin: 0;
+}
+
+
+.pagination {
+    position: fixed;
+    opacity: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0x;
+    border-top: 1px solid black;
+    background: white;
+    text-transform: uppercase;
+.close-project {
+    width: 100%;
+    text-align: center;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+
+}
+    a {
+        width: calc(50% - 42px);
+        display: block;
+        padding: 10px 20px;
+    }
+    a:nth-child(3) {
+        border-left: 1px solid black;
+        text-align: right;
+    }
+    
+}
+
+}
+.fixedpagenation {
+    opacity: 1;
+    animation-duration: 0.1s;
+    animation-name: slidein;
+}
+.singleLink {
+    a {
+        width: calc(100% - 40px);
+        text-align: center;
+    }
+}
+.images {
+    figure,.projectVideo {
+
+    }
+}
+
 
 
