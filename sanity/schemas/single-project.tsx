@@ -189,12 +189,12 @@ export default {
               ]
             }, 
             {
-              title: 'Project Text/embedded link', 
+              title: 'Project Text', 
               name: 'projectText',
               type: 'object', 
               fields: [
                 {name: 'text', type: 'text'
-              , title: 'Project Text/embedded link'},
+              , title: 'Project Text'},
               {
                 name: 'width',
                 type: 'string',

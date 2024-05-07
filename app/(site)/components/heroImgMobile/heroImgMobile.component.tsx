@@ -32,7 +32,7 @@ function randomHero(herovisualMobile: string | any[]) {
             <>
                     <Image src={hero.heroImgUrl} alt={hero.attribution} 
                      key={hero._key}
-                    width={500} height={500} />
+                    width={500} height={500}  />
               
             </>
         );

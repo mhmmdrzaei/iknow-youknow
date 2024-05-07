@@ -148,11 +148,15 @@ body {
             justify-content: space-between;
             align-items: center;
             text-transform: uppercase;
+            width: 40%;
+            max-width: 300px;
             a, button {
-                min-width: 100px;
                 align-items: center;
                 text-align: center;
                 text-transform: uppercase;
+            }
+            .officeLink {
+                text-align: right;
             }
     
         }
@@ -299,15 +303,19 @@ body {
                 @extend .contain;
                 position: absolute;
                 background: white;
+                padding-top: 0;
                 bottom: 0;
                 min-height: 30px;
-                padding: 20px 40px;
                 @extend .flex;
                 border-top: 1px solid black;
                 align-items: center;
                 border-bottom: 1px solid black;
                 span {
                     display: inline;
+                    padding-top: 20px;
+                }
+                span:nth-child(1) {
+                    max-width: 480px;
                 }
                 .category {
                     text-transform: uppercase;
@@ -415,18 +423,19 @@ body {
         margin: 0 auto;
         font-family: opensans-reg, sans-serif;
         .embedVideoContent {
-            position: relative;
-          padding-bottom: 54.25%;
-          height: 0;
-          width: 100%;
-          margin: 0 auto;
-          iframe {
-            position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          }
+        //     position: relative;
+        //   padding-bottom: 54.25%;
+        //   height: 0;
+        //   width: 100%;
+        //   margin: 0 auto;
+        //   iframe {
+        //     position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   width: 100%;
+        //   height: 100%;
+        //   }
+        font-size: 18px;
         
         }
     }
@@ -465,7 +474,7 @@ body {
                     width: calc(50% - 40px);
                     padding-right: 40px;
                     text-align: right;
-                    font-size: .95vw;
+
                     line-height: 1.5;
                     margin: 0;
                     font-weight: 300;
@@ -474,7 +483,7 @@ body {
                     width: 50%;
                     margin-top: 0;
                     line-height: 1.5;
-                    font-size: .95vw;
+
 
                 }
             }
@@ -512,13 +521,14 @@ body {
 .projectPage {
     width: 100%;
 }
+
 @media(max-width: 630px){
 .contain {
     width: calc(100% - 40px);
     padding: 15px 20px;
 }
 .headingContainer {
-    height: 54px;
+    height: 80px;
     // width: calc(100% - 60px);
     .logoLink {
         width: 100%;
@@ -526,6 +536,7 @@ body {
     }
     .menuHeader {
         width: 100%;
+        max-width: 100%;
         margin-top: 10px;
         a, button {
             min-width: 0;
@@ -560,7 +571,7 @@ body {
 .menuItems {
     width: 100%;
     border-left: 0;
-    top: 85px;
+    top: 111px;
     height: calc(100vh - 86px);
     ul li a {
         display: block;
@@ -671,7 +682,7 @@ body {
         .singlePageContent {
             width: 100%;
             margin: 0;
-            margin-top: 90px;
+            margin-top:110px;
             padding: 20px;
             p {
                 font-size: 18px;
@@ -731,6 +742,16 @@ body {
 
     }
 }
-
+@media(max-width: 500px){
+    .headingContainer {
+        height: 54px;
+    }
+    .officePage .pageMain .singlePageContent {
+        margin-top: 90px;
+    }
+    .menuItems {
+        top: 85px;
+    }
+}
 
 

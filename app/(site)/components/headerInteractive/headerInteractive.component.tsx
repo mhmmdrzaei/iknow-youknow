@@ -6,6 +6,7 @@ import Link from 'next/link';
 import {SingleProject} from '@/sanity/types/Project'
 import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 export const dynamic = 'force-dynamic'
+import { v4 as uuidv4 } from 'uuid';
 
 type HeaderProps = {
     projects: SingleProject[]
@@ -65,37 +66,37 @@ const handleCloseOffice = () => {
     return (
         <>
             <section  className='menuHeader'>
-            <Link  className={`worksLink ${pathname === '/' ? 'active' : 'inactive'}`} href={`#categories`} >
+            <Link key={uuidv4()} className={`worksLink ${pathname === '/' ? 'active' : 'inactive'}`} href={`#categories`} >
                     Work
             </Link>
-            <button className={`menuButton`} onClick={openMenu} >
+            <button key={uuidv4()} className={`menuButton`} onClick={openMenu} >
             {menuButtonText}
             </button>
-            <Link href={`/office`} className={`officeLink ${pathname === '/office' ? 'inactive' : ''}`}>
+            <Link key={uuidv4()} href={`/office`} className={`officeLink ${pathname === '/office' ? 'inactive' : ''}`}>
                     office
             </Link>
-            <button onClick={handleCloseProject} className={`close-project ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
+            <button key={uuidv4()} onClick={handleCloseProject} className={`close-project ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
 
-            <button onClick={handleCloseOffice}  className={`link ${pathname === '/office' ? 'active' : 'inactive'}`}>
+            <button key={uuidv4()} onClick={handleCloseOffice}  className={`link ${pathname === '/office' ? 'active' : 'inactive'}`}>
                     Close Office
             </button>
        
 
             </section>
-            <section className={`menuItems ${activeMenu ? 'menuButtonActive' : ''}`} >
+            <section key={uuidv4()} className={`menuItems ${activeMenu ? 'menuButtonActive' : ''}`} >
             {categories
                 .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))
                 .map((category) => (
                     
-                    <ul key={category._id} className="menuCatListing">
+                    <ul key={uuidv4()} className="menuCatListing">
                         {projects
                         .filter(
                             (project) => project.categorySlug === category.slug && project.visible === true
                         )
                         .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))
                         .map((project) => (
-                            <li key={project._id}>
-                            <Link href={`/${project.slug}`} onClick={openMenu}>
+                            <li key={uuidv4()}>
+                            <Link key={uuidv4()} href={`/${project.slug}`} onClick={openMenu}>
                                 <span className='date'>{project.projectDate}</span>
                                 <span className="client">{project.title}</span>
                                 <span className='cat'>{project.categoryName}</span>

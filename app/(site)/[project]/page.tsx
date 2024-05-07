@@ -4,6 +4,7 @@ import ProjectPage from "../components/singleProjectListing/singleProjectListing
 import type { Metadata } from 'next';
 import PrevNext from "../components/prevNext/prevNext.component";
 import { v4 as uuidv4 } from 'uuid';
+import CloseProject from "../components/closeProject/closeProject.component";
 
 type Props = {
     params: { project: string }

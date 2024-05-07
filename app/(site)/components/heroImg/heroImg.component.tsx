@@ -31,7 +31,8 @@ function randomHero(herovisual: string | any[]) {
 
             <Image src={hero.heroImgUrl} alt={hero.attribution} 
                      key={hero._key}
-                    width={2000} height={2000} />
+                    width={2000} height={2000} 
+                    priority={true} />
 
                     
               
@@ -47,6 +48,7 @@ function randomHero(herovisual: string | any[]) {
                 <Image src={randomHero.heroImgUrl} alt={randomHero.attribution}
               key={randomHero._key}
               width={2000} height={2000}
+              priority={true}
                  />
         </>
     );

@@ -4,6 +4,7 @@ import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import {useRouter } from 'next/navigation'
+import CloseProject from '../closeProject/closeProject.component';
 
 type HeaderProps = {
     projects: SingleProject[];
@@ -13,6 +14,7 @@ type HeaderProps = {
 };
 
 export default function PrevNext({ projects, categories, slug }: HeaderProps) {
+    const router = useRouter();
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     const [isFixed, setIsFixed] = useState(false);
 
@@ -33,7 +35,7 @@ export default function PrevNext({ projects, categories, slug }: HeaderProps) {
             window.removeEventListener('resize', handleResize); // Cleanup the resize event listener
             window.removeEventListener('scroll', handleScroll); // Cleanup the scroll event listener
         };
-    }, []);
+    }, []); // Empty dependency array ensures this effect runs only once on mount
 
     if (!isSmallScreen) {
         return null; // If not a small screen, don't render anything
@@ -67,7 +69,6 @@ export default function PrevNext({ projects, categories, slug }: HeaderProps) {
     const hasPrevious = !!previousSlug; // Convert to boolean
     const hasNext = !!nextSlug; // Convert to boolean
     const isSingleLink = (hasPrevious && !hasNext) || (!hasPrevious && hasNext);
-    const router = useRouter()
 
     const handleCloseProject = () => {
         // Get the current slug from the router object
@@ -89,7 +90,7 @@ export default function PrevNext({ projects, categories, slug }: HeaderProps) {
       };
 
     return (
-        <div className={`pagination ${isFixed ? 'fixedpagenation' : ''} ${isSingleLink ? 'singleLink' : ''}`}>
+        <div className={`pagination ${isFixed ? 'fixedpagenation' : ''} ${isSingleLink ? 'singleLink' : ''}`}>      
             <button onClick={handleCloseProject} className={`close-project`}>Close Project</button>
             {previousSlug && (
                 <Link href={`/${previousSlug}`}>

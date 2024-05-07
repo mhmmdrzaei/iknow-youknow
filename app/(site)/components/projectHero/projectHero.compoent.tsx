@@ -30,11 +30,10 @@ export default function ProjectHero({ imagesHero }: HeaderProps) {
               <Image
               key={uuidv4()}
                 src={hero.heroImgUrl}
-                width={500}
-                height={500}
+                width={700}
+                height={700}
                 className="homeImgmmobil section"
                 alt={`${hero.attribution} `}
-                loading="eager"
                 quality={60}
               />
 
@@ -49,7 +48,6 @@ export default function ProjectHero({ imagesHero }: HeaderProps) {
                 height={2000}
                 className="homeImg section"
                 alt={`${hero.attribution} `}
-                loading="eager"
                 quality={60}
               />
 
