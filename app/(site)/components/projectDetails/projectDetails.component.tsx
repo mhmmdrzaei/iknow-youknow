@@ -48,8 +48,8 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
 
     return (
         <>
+         <ProjectHeading project={project}/>
         <section className="projectHeadingContainer">
-        <ProjectHeading project={project}/>
         {project.projectHerovisual && (
           <ProjectHero imagesHero={project.projectHerovisual} />
         

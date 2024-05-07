@@ -11,25 +11,22 @@ type HeaderProps = {
 
 export default function ProjectHero({ imagesHero }: HeaderProps) {
   return (
-    <section className={imagesHero.some(hero => hero._type === 'mobile_image') ? 'has_mobile hero_img' : 'no_mobile hero_img'}>
+    <section className={imagesHero.some(hero => hero._type === 'mobile_image') ? 'has_mobile hero_img section' : 'no_mobile hero_img section'}>
     
     {imagesHero.map((hero) => {
       switch (hero._type) {
         case 'hero_video':
           return (
-            <ScrollSection>
             <div key={uuidv4()} className={`hero_Video section`}>
               <video autoPlay loop muted playsInline>
                 <source src={hero.heroImgUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
-          </ScrollSection>
           );
 
         case 'mobile_image':
           return (
-            <ScrollSection>
               <Image
               key={uuidv4()}
                 src={hero.heroImgUrl}
@@ -40,12 +37,11 @@ export default function ProjectHero({ imagesHero }: HeaderProps) {
                 loading="eager"
                 quality={60}
               />
-              </ScrollSection>
+
           );
 
         case 'hero_image':
           return (
-            <ScrollSection>
               <Image
                key={uuidv4()}
                 src={hero.heroImgUrl}
@@ -56,7 +52,7 @@ export default function ProjectHero({ imagesHero }: HeaderProps) {
                 loading="eager"
                 quality={60}
               />
-            </ScrollSection>
+
           );
 
         default:

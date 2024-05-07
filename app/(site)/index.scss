@@ -221,7 +221,7 @@ body {
     }
     .headingfixed {
         opacity: 1;
-        animation-duration: .1s;
+        animation-duration: .3s;
         animation-name: slidein;
        
     }
@@ -355,17 +355,18 @@ body {
       }
 // Project page 
 .projectHeadingContainer {
-    position: relative;
-    top: -64px;
+    // position: relative;
+    // top: -64px;
 }
 
 .projectHeading {
     border-bottom: 1px solid black;
     @extend .contain;
     @extend .flex;
-    position: sticky;
-    z-index: 3;
+    position: fixed;
+    z-index: 1;
     top: 0;
+    height: 30px;
 
     background: white;
     transition: all .3s ease;;
@@ -518,6 +519,7 @@ body {
 }
 .headingContainer {
     height: 54px;
+    // width: calc(100% - 60px);
     .logoLink {
         width: 100%;
         max-width: inherit;
@@ -525,6 +527,13 @@ body {
     .menuHeader {
         width: 100%;
         margin-top: 10px;
+        a, button {
+            min-width: 0;
+        }
+        button {
+            text-align: left;
+        }
+
 
         .worksLink {
             text-align: left;
@@ -552,6 +561,7 @@ body {
     width: 100%;
     border-left: 0;
     top: 85px;
+    height: calc(100vh - 86px);
     ul li a {
         display: block;
         padding: 15px 10px;
@@ -633,6 +643,8 @@ body {
     border-top: 1px solid black;
     background: white;
     text-transform: uppercase;
+    display: flex;
+    flex-flow: wrap;
 .close-project {
     width: 100%;
     text-align: center;
@@ -652,13 +664,62 @@ body {
     }
     
 }
+.officePage {
+    .pageMain {
+        // animation: none;
+        position: relative;
+        .singlePageContent {
+            width: 100%;
+            margin: 0;
+            margin-top: 90px;
+            padding: 20px;
+            p {
+                font-size: 18px;
+                padding-right: 0;
+                width: 100%;
+
+            }
+        }
+        .pageSideOffice {
+            width: 100%;
+            margin: 0;
+            padding: 20px;
+            .contactOffice .contactInnerContainer {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+           .services,.contactOffice {
+            display: block;
+            h3,p, a {
+               
+                font-size: 14.5px;
+                width: 100%;
+                text-align: left;
+            }
+            h3 {
+                margin-bottom: 5px;
+            }
+
+           }
+        }
+    }
+}
 
 }
 .fixedpagenation {
     opacity: 1;
-    animation-duration: 0.1s;
-    animation-name: slidein;
+    animation-duration: 0.8s;
+    animation-name: slideeh;
 }
+@keyframes slideeh {
+    from {
+      bottom: -50px;
+    }
+  
+    to {
+      bottom: 0;
+    }
+  }
 .singleLink {
     a {
         width: calc(100% - 40px);

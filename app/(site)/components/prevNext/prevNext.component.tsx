@@ -22,7 +22,7 @@ export default function PrevNext({ projects, categories, slug }: HeaderProps) {
         };
 
         const handleScroll = () => {
-            setIsFixed(window.scrollY > window.innerHeight * 2); // Check if scrolled beyond 200vh
+            setIsFixed(window.scrollY > (window.innerHeight + 50)); // Check if scrolled beyond 200vh
         };
 
         handleResize(); // Check initial screen width
