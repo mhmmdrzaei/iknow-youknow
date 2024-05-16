@@ -68,5 +68,6 @@ export default async function Project({ params }: Props) {
             <PrevNext projects={projects} categories={categories} sortedProjects={[]} slug={slug} />
           </section>
         </main>
+        
     );
 }

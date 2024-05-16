@@ -3,7 +3,6 @@ import { HeroImage } from '@/sanity/types/Project';
 import Image from 'next/image';
 import React from 'react';
 export const dynamic = 'force-dynamic'
-import ScrollSection from '../scroll/scroll.component';
 
 type HeaderProps = {
   imagesHero: HeroImage[];

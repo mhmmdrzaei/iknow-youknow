@@ -33,6 +33,9 @@ html {
 body {
     margin: 0 !important;
     overflow-x: hidden;
+    height: 100%;
+  margin: 0;
+  overflow: hidden; 
 }
 img {
   max-width: 100%;
@@ -86,6 +89,7 @@ body {
     
     
 }
+
 .contain {
     width: calc(100% - 80px);
     padding: 15px 40px;
@@ -293,6 +297,7 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
+
     li {
         a {
             display: block;
@@ -352,14 +357,16 @@ body {
     }
     .section {
         height: 100vh;
-        position: sticky;
-        top: 0 !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: translate(0, 0) !important;
+  width: 100%;
+  scroll-snap-align: start; /* Each section aligns at the start */
+  display: flex;
+  justify-content: center;
+  align-items: center;
         background: white;
 
+      }
+      .officeSection {
+        height: 1px;
       }
 // Project page 
 .projectHeadingContainer {
@@ -444,9 +451,9 @@ body {
 
 
 //office page 
-.homepage {
-    margin-bottom: 100px;
-}
+// .homepage {
+//     margin-bottom: 100px;
+// }
 .officePage {
     .pageMain {
         animation: slideup 1s ease-in-out;
@@ -521,6 +528,10 @@ body {
 .projectPage {
     width: 100%;
 }
+.footer {
+    width: 100%;
+    height: 30vh;
+  }
 
 @media(max-width: 630px){
 .contain {

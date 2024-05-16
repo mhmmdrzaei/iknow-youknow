@@ -2,9 +2,10 @@ import { SingleProject } from '@/sanity/types/Project';
 import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 import Link from 'next/link';
 import ProjectHero from '../projectHero/projectHero.compoent';
-import ScrollSection from '../scroll/scroll.component';
 export const dynamic = 'force-dynamic'
 import { v4 as uuidv4 } from 'uuid';
+
+
 
 type HeaderProps = {
   projects: SingleProject[];
@@ -28,7 +29,6 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
               )
               .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity)) // Sort based on the 'sort' field
               .map((project) => (
-                <ScrollSection>
                 <li key={uuidv4()} id={project.slug} className='section'>
                   <Link href={`/${project.slug}`}>
                   <ProjectHero imagesHero={project.projectHerovisual} />
@@ -54,7 +54,6 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                     
                     </Link>
                 </li>
-                </ScrollSection>
               ))}
           </ul>
       ))}

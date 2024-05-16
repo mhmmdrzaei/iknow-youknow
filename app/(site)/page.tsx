@@ -5,6 +5,7 @@ import ScrollToBottomDetector from './components/officeScroll/officeScroll.compo
 import type { Metadata } from 'next'
 import HeroContainer from './components/heroContainer/heroContainer.component'
 import CategoriesHome from './components/categories/categories.component';
+import ScrollComponent from './components/scroll/scroll.component'
 
  
 export async function generateMetadata(
@@ -43,7 +44,8 @@ export default async function Home() {
   return (
    
     <main>
-      
+        <ScrollComponent>
+
        <HeroContainer settings={settings}/>
        <Header set={settings} projects={projects} categories={categories}/>
        
@@ -53,10 +55,16 @@ export default async function Home() {
     
       <CategoriesHome categories={categories} />
 
-        <ProjectListing projects={projects} categories={categories}/>
+      <ProjectListing projects={projects} categories={categories}/>
 
       </section>
+      <section className="section officeSection">
       <ScrollToBottomDetector />
+
+      </section>
+     
+
+      </ScrollComponent>
 
     </main>
   )

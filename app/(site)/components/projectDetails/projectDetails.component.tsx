@@ -1,11 +1,11 @@
 import { HeroImage, ProjectAssets, SingleProject } from '@/sanity/types/Project';
 import ProjectImages from "../../components/projectImages/projectImages.compoent";
 import { PortableText } from "@portabletext/react";
-import Image from 'next/image';
 import { v4 as uuidv4 } from 'uuid';
 import ProjectHero from '../projectHero/projectHero.compoent';
 import ProjectHeading from '../projectHeading/projectHeading.component';
-import ScrollSection from '../scroll/scroll.component';
+import ScrollComponent from '../scroll/scroll.component'
+
 
 export const dynamic = 'force-dynamic'
 
@@ -48,6 +48,7 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
 
     return (
         <>
+         <ScrollComponent>
          <ProjectHeading project={project}/>
         <section className="projectHeadingContainer">
         {project.projectHerovisual && (
@@ -56,7 +57,6 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
 
          
         )}
-        <ScrollSection>
         <div className="section">
         <section className="projectdescContainer">
           {project.projectdescription && (
@@ -81,10 +81,6 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
         </div>
 
 
-        </ScrollSection>
-
-
-
         </section>
 
       
@@ -97,6 +93,7 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
         )}
 
         </section>
+        </ScrollComponent>
 
         
         
