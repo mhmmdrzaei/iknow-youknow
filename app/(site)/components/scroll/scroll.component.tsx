@@ -10,9 +10,9 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children }) => {
     let currentSectionIndex = 0;
     let isScrolling = false;
     let accumulatedScroll = 0;
-    const scrollThreshold = 20; // Adjust this value as needed for your scroll sensitivity
+    const scrollThreshold = 200; // Adjust this value as needed for your scroll sensitivity
     const defaultDuration = 800; // Default duration for smooth scrolling
-    const fastDuration = 500; // Faster duration for sections with a parent of .singleCatListing or .hero_img
+    const fastDuration = 800; // Faster duration for sections with a parent of .singleCatListing or .hero_img
     
 
     const scrollToSection = (index: number) => {
