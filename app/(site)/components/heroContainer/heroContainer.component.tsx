@@ -38,7 +38,7 @@ export default function HeroContainer({ settings }: HeroContainerProps) {
 
 
     return (
-        <section className='heroSection section' onClick={handleClick} >
+        <section className='heroSection section keen-slider__slide' onClick={handleClick} >
             <HeroComponent settings={settings}  />;
             <h1>I Know You Know</h1>
         </section>

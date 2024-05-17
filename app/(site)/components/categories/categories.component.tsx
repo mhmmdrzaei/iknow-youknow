@@ -17,7 +17,7 @@ const CategoriesHome = ({ categories }: HeaderProps) => {
     };
   
     return (
-      <div className="section">
+      <div className="section keen-slider__slide">
         <section className="categoriesContainer" id="categories">
           {categories.map((category) => (
             <section key={category._id} className="categoryEach" onClick={() => handleClick(category.slug)}>

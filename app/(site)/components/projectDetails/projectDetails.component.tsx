@@ -52,7 +52,11 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
          <ProjectHeading project={project}/>
         <section className="projectHeadingContainer">
         {project.projectHerovisual && (
-          <ProjectHero imagesHero={project.projectHerovisual} />
+          <div className="section">
+            <ProjectHero imagesHero={project.projectHerovisual} />
+
+          </div>
+          
         
 
          

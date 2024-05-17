@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, ReactNode } from 'react';
+import React, { useEffect, ReactNode,useState } from 'react';
 interface ScrollComponentProps {
   children: ReactNode;
 }
@@ -10,9 +10,10 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children }) => {
     let currentSectionIndex = 0;
     let isScrolling = false;
     let accumulatedScroll = 0;
-    const scrollThreshold = 100; // Adjust this value as needed for your scroll sensitivity
-    const defaultDuration = 500; // Default duration for smooth scrolling
-    const fastDuration = 0; // Faster duration for sections with a parent of .singleCatListing or .hero_img
+    const scrollThreshold = 20; // Adjust this value as needed for your scroll sensitivity
+    const defaultDuration = 800; // Default duration for smooth scrolling
+    const fastDuration = 500; // Faster duration for sections with a parent of .singleCatListing or .hero_img
+    
 
     const scrollToSection = (index: number) => {
       if (isScrolling) return;
@@ -40,17 +41,17 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children }) => {
       }
     };
 
-    const handleKey = (event: KeyboardEvent) => {
-      if (isScrolling) return;
+ const handleKey = (event: KeyboardEvent) => {
+    if (isScrolling) return;
 
-      if (event.keyCode === 38) { // Up arrow key
-        currentSectionIndex = Math.max(currentSectionIndex - 1, 0);
-        scrollToSection(currentSectionIndex);
-      } else if (event.keyCode === 40) { // Down arrow key
-        currentSectionIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
-        scrollToSection(currentSectionIndex);
-      }
-    };
+    if (event.key === 'ArrowUp') { // Up arrow key
+      const newIndex = Math.max(currentSectionIndex - 1, 0);
+      scrollToSection(newIndex);
+    } else if (event.key === 'ArrowDown') { // Down arrow key
+      const newIndex = Math.min(currentSectionIndex + 1, document.querySelectorAll('.section').length - 1);
+      scrollToSection(newIndex);
+    }
+  };
 
     window.addEventListener('wheel', handleScroll, { passive: false });
     window.addEventListener('keydown', handleKey);
@@ -69,4 +70,3 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children }) => {
 };
 
 export default ScrollComponent;
-

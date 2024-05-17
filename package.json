@@ -13,6 +13,7 @@
     "@sanity/vision": "^3.38.0",
     "@splidejs/react-splide": "^0.7.12",
     "gsap": "^3.12.5",
+    "keen-slider": "^6.8.6",
     "next": "14.2.2",
     "next-sanity": "^9.0.7",
     "react": "^18",
