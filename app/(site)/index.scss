@@ -1,19 +1,36 @@
 
-@font-face {
-    font-family: opensans-reg;
-    src: local('opensans-reg'), url(sources/fonts/Office_Sans-Regular.woff) 
-         format('woff'),
-         local('opensans-reg'), url(sources/fonts/Office_Sans-Regular.woff2) format('woff2');
+// @font-face {
+//     font-family: opensans-reg;
+//     src: local('opensans-reg'), url(sources/fonts/Office_Sans-Regular.woff) 
+//          format('woff'),
+//          local('opensans-reg'), url(sources/fonts/Office_Sans-Regular.woff2) format('woff2');
 
+//     font-weight: normal;
+//     font-style: normal;
+
+// }
+// @font-face {
+//     font-family: opensans-light;
+//     src: local('opensans-light'), url(sources/fonts/Office_Sans-Light.woff) 
+//          format('woff'),
+//          local('opensans-light'), url(sources/fonts/Office_Sans-Light.woff2) format('woff2');
+//     font-style: normal;
+
+// }
+
+@font-face {
+    font-family: 'authentic_sans60';
+    src: url('sources/fonts/authenticsans-60-webfont.woff2') format('woff2'),
+         url('sources/fonts/authenticsans-60-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
 @font-face {
-    font-family: opensans-light;
-    src: local('opensans-light'), url(sources/fonts/Office_Sans-Light.woff) 
-         format('woff'),
-         local('opensans-light'), url(sources/fonts/Office_Sans-Light.woff2) format('woff2');
+    font-family: 'authentic_sans90';
+    src: url('sources/fonts/authenticsans-90-webfont.woff2') format('woff2'),
+         url('sources/fonts/authenticsans-90-webfont.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
 
 }
@@ -47,15 +64,16 @@ figure {
     flex-flow:wrap;
     justify-content: space-between;
 }
-h3, h4, h5, p, span, button, a {
+h3, h4, h5, em,h1, h2 {
    
-    font-family: opensans-reg, sans-serif;
-    font-weight: 300;
+    font-family: authentic_sans60, sans-serif;
+    font-weight: 100;
 }
-b, em,h1, h2 {
-    font-family: opensans-reg, sans-serif;
-    font-weight: 300;
+p, span, button, a,b {
+    font-family: authentic_sans90, sans-serif;
 }
+
+
 button {
     background: transparent;
     border: none;
@@ -133,7 +151,7 @@ body {
         
     }
     h1 {
-        font-size: 8vw;
+        font-size: 6vw;
         position: absolute;
         width: 100%;
         text-align: center;
@@ -141,6 +159,7 @@ body {
         margin: 0;
         align-content: center;
         height: 100vh;
+        font-weight: 600;
         cursor: pointer;
         &:hover {
             color: white;
@@ -157,7 +176,7 @@ body {
         border-bottom: 1px solid black;
         transition: all .5s ease;
         z-index: 2;
-        position: absolute;
+        position: sticky;
         top: 0;
         opacity: 1;
         .logoLink{
@@ -195,14 +214,14 @@ body {
 
     .menuItems {
         position: absolute;
-        width: calc(50% - 1px);
         height: calc(100vh - 64px);
         background: white;
         top: 61px;
-        border-left: 1px solid black;
-        transition: transform ease .5s;
-        transform: translateX(100%);
-        right: 0;
+        // transition: transform ease .5s;
+        // display: none;
+        width: 0;
+        right: 0%;
+        overflow: hidden;
         ul {
             list-style: none;
             margin: 0;
@@ -243,9 +262,21 @@ body {
         }
     }
     .menuButtonActive {
-        transform: translateX(0);
-        transition: all 1s ease;
+        // transition: all 2s ease;
+        animation-duration: 1s;
+        animation-name: slideSide;
+        width: calc(50% - 1px);
+        border-left: 1px solid black;
     }
+    @keyframes slideSide {
+        from {
+            width: 0;
+          }
+        to {
+            width: calc(50% - 1px);
+            right: 0;
+        }
+      }
     .headingfixed {
         opacity: 1;
         animation-duration: .3s;
@@ -253,7 +284,7 @@ body {
        
     }
     .officeMenu {
-        opacity: 1;
+        position: fixed;
     }
 
     @keyframes slidein {
@@ -290,7 +321,6 @@ body {
             letter-spacing: -.1vw;
             // font-weight: 100;
             margin: 0;
-            font-family: opensans-light, sans-serif;
             transform: translate(0%, 25%);
         }
        }
@@ -328,7 +358,7 @@ body {
                 @extend .contain;
                 position: absolute;
                 background: white;
-                padding-top: 0;
+                padding: 0 40px;
                 bottom: 0;
                 min-height: 30px;
                 @extend .flex;
@@ -337,10 +367,7 @@ body {
                 border-bottom: 1px solid black;
                 span {
                     display: inline;
-                    padding-top: 20px;
-                }
-                span:nth-child(1) {
-                    max-width: 480px;
+                    padding: 20px 0;
                 }
                 .category {
                     text-transform: uppercase;
@@ -387,7 +414,7 @@ body {
 
       }
       .officeSection {
-        height: 100vh;
+        height: 1vh;
         width: 100%;
       }
 // Project page 
@@ -424,10 +451,14 @@ body {
     margin: 90px 0 40px 40px;
 
     top: 0;
-    font-size: 1.8vw;
-    @media screen and (max-width: 1200px) {
-        font-size: 14.5px;
+    p, a {
+        font-size: 1.8vw;
+        line-height: 1.4;
+        font-weight: bold;
+        font-family: authentic_sans60, sans-serif;
+
     }
+   
 }
 .creditContainer {
     @extend .contain;
@@ -441,7 +472,7 @@ body {
 }
 .images {
     @extend .contain;
-    margin-bottom: 80px;
+    // margin-bottom: 80px;
     figure,.projectVideo {
         margin: 0 auto;
         
@@ -460,20 +491,7 @@ body {
     .videotextContainer {
         max-width: 80%;
         margin: 0 auto;
-        font-family: opensans-reg, sans-serif;
         .embedVideoContent {
-        //     position: relative;
-        //   padding-bottom: 54.25%;
-        //   height: 0;
-        //   width: 100%;
-        //   margin: 0 auto;
-        //   iframe {
-        //     position: absolute;
-        //   top: 0;
-        //   left: 0;
-        //   width: 100%;
-        //   height: 100%;
-        //   }
         font-size: 18px;
         
         }
@@ -482,13 +500,9 @@ body {
 }
 
 
-//office page 
-// .homepage {
-//     margin-bottom: 100px;
-// }
 .officePage {
     .pageMain {
-        animation: slideup 1s ease-in-out;
+        animation: slideup .5s ease-in-out;
         position: absolute;
         @extend .flex;
         .singlePageContent {
@@ -499,8 +513,9 @@ body {
                 padding-right: 40px;
                 margin-top: 0;
                 font-size: 1.8vw;
+                font-weight: 200;
+                // font-family: authentic_sans60, sans-serif;
                 line-height: 1.4;
-                font-weight: 700;
                 margin-bottom: 20px;
             }
         }
@@ -509,11 +524,12 @@ body {
             margin: 90px 40px 40px 0;
             .services,.contactOffice {
                 @extend .flex;
+                margin-bottom: 40px;
                 h3 {
                     width: calc(50% - 40px);
                     padding-right: 40px;
                     text-align: right;
-
+                    font-family: authentic_sans90, sans-serif;
                     line-height: 1.5;
                     margin: 0;
                     font-weight: 300;
@@ -572,8 +588,43 @@ body {
     width: 100%;
     height: 30vh;
   }
+@media (max-width: 1000px){
+    .singleCatListing li a {
+        .singleProjDetails {
+            padding:0;
+            width: 100%;
+            span {
+                padding-top: 15px;
+            }
+            span:nth-child(1) {
+                width: 100%;
+                padding: 20px 20px 15px;
+                border-bottom: 1px solid black;
+                // margin-bottom: 20px;
+            }
+            .clientName {
+                padding-left: 20px;
+                
+            }
+            .category {
+                padding-right: 20px;
+            }
+    
+        }
+    
+    }
+    .projectDescription {
+        p, a {
+            font-size: 18px;
+            line-height: initial;
+        }
+    
+    }
+
+}
 
 @media(max-width: 630px){
+
 .contain {
     width: calc(100% - 40px);
     padding: 15px 20px;
@@ -609,6 +660,23 @@ body {
     }
 
 }
+
+.menuButtonActive {
+    // transition: all 2s ease;
+    animation-duration: 1s;
+    animation-name: slideSide;
+    border-left: none;
+    width: 100%;
+}
+@keyframes slideSide {
+    from {
+        width: 0;
+      }
+    to {
+        width: 100%;
+        right: 0;
+    }
+  }
     
 .projectHeading {
     height: 54px;
@@ -622,7 +690,7 @@ body {
     }
 }
 .menuItems {
-    width: 100%;
+    // width: 100%;
     border-left: 0;
     top: 111px;
     height: calc(100vh - 86px);
@@ -638,6 +706,13 @@ body {
         }
     }
 
+}
+.heroSection {
+    h1 {
+        font-size: 9vw;
+        color: #FFFFFF;
+
+    }
 }
 //categories 
 .categoriesContainer {
@@ -658,29 +733,26 @@ body {
         margin-top: 84px;
     }
 }
-
-//single project 
 .singleCatListing li a {
     .singleProjDetails {
-        padding: 15px 0;
+        padding: 0;
+        // padding-bottom: 20px;
         width: 100%;
-        span:nth-child(1) {
-            width: 100%;
-            padding: 0 20px 15px;
-            border-bottom: 1px solid black;
-            margin-bottom: 15px;
-        }
-        .clientName {
-            padding-left: 20px;
-            
-        }
-        .category {
-            padding-right: 20px;
-        }
-
     }
+}
+
+//single project 
+.projectDescription {
+
+
+
+    width: calc(100% - 40px);
+    padding: 20px;
+    margin: 0;
+    margin-top: 166px;
 
 }
+
 .has_mobile {
     .hero_Video, .homeImg {
         display: none;
@@ -689,17 +761,12 @@ body {
         display: block;
     }
 }
-.projectDescription {
-    font-size: 18px;
-    width: calc(100% - 40px);
-    padding: 20px;
-    margin: 0;
-}
+
 
 
 .pagination {
-    position: fixed;
-    opacity: 0;
+    position: sticky;
+    opacity: 1;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -729,6 +796,9 @@ body {
     
 }
 .officePage {
+    // .officeMenu {
+    //     position: fixed;
+    // }
     .pageMain {
         // animation: none;
         position: relative;
@@ -738,7 +808,9 @@ body {
             margin-top:110px;
             padding: 20px;
             p {
-                font-size: 1.8vw;
+                font-size: 1.7vw;
+                width: 100%;
+                padding-right: 0;
                 @media screen and (max-width: 640px) {
                     font-size: 18px;
                 }
@@ -758,7 +830,7 @@ body {
             h3,p, a {
                 font-size: 14.5px;
 
-                width: 100%;
+                width: 90%;
                 text-align: left;
 
             }
@@ -802,7 +874,7 @@ body {
         height: 54px;
     }
     .officePage .pageMain .singlePageContent {
-        margin-top: 90px;
+        // margin-top: 90px;
     }
     .menuItems {
         top: 85px;

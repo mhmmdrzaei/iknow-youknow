@@ -44,7 +44,7 @@ export default function ProjectImages({ images }: HeaderProps) {
                     width={1200}
                     height={1200}
                     className="homeImg"
-                    alt={`${items.attribution} `}
+                    alt={items.attribution ? items.attribution : 'A Project by I Know You Know'}
                     loading="eager"
                     quality={60}
                   />
@@ -64,7 +64,7 @@ export default function ProjectImages({ images }: HeaderProps) {
 
           case 'externalVideo':
             return (
-              <div className="section keen-slider__slide" key={uuidv4()}>
+              <div className="section keen-slider__slide" data-snap-point key={uuidv4()}>
                 <div className="projectVideo" style={maxWidthStyle}>
                   <video autoPlay loop muted playsInline>
                     <source src={items.exVidURL} type="video/mp4" />

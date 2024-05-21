@@ -32,7 +32,7 @@ export default function ProjectHero({ imagesHero }: HeaderProps) {
                 width={700}
                 height={700}
                 className="homeImgmmobil"
-                alt={`${hero.attribution} `}
+                alt={hero.attribution ? hero.attribution : 'A Project by I Know You Know'}
                 quality={60}
               />
 
@@ -45,8 +45,9 @@ export default function ProjectHero({ imagesHero }: HeaderProps) {
                 src={hero.heroImgUrl}
                 width={2000}
                 height={2000}
+                priority={true}
                 className="homeImg"
-                alt={`${hero.attribution} `}
+                alt={hero.attribution ? hero.attribution : 'A Project by I Know You Know'}
                 quality={60}
               />
 

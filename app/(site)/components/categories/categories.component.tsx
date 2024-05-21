@@ -19,7 +19,9 @@ const CategoriesHome = ({ categories }: HeaderProps) => {
     return (
       <div className="section keen-slider__slide" data-snap-point>
         <section className="categoriesContainer" id="categories">
-          {categories.map((category) => (
+          {categories
+           .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))
+          .map((category) => (
             <section key={category._id} className="categoryEach" onClick={() => handleClick(category.slug)}>
               <div className="categoryName">
                 <h2>{category.name}</h2>

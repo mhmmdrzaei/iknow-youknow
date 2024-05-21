@@ -4,6 +4,7 @@ import Link from 'next/link';
 import ProjectHero from '../projectHero/projectHero.compoent';
 export const dynamic = 'force-dynamic'
 import { v4 as uuidv4 } from 'uuid';
+import RedirectToOffice from '../officeScroll/officeScroll.component';
 
 
 
@@ -56,7 +57,9 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                 </li>
               ))}
           </ul>
+          
       ))}
+      <RedirectToOffice/>
     </>
   );
 }

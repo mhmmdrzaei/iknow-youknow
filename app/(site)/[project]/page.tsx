@@ -62,10 +62,8 @@ export default async function Project({ params }: Props) {
 
     return (
         <main key={uuidv4()}>
-          <Header set={settings} projects={projects} categories={categories}/>
           <section className="pageMain projectPage" key={uuidv4()}>
-            <ProjectPage project={project} />
-            <PrevNext projects={projects} categories={categories} sortedProjects={[]} slug={slug} />
+            <ProjectPage project={project} settings={settings} projects={projects}  slug={slug} categories={categories} sortedProjects={[]} />
           </section>
         </main>
         

@@ -1,6 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState, ReactNode } from 'react';
 
+// Define a type for the return value of onLeave
+interface OnLeaveResult {
+  cancel?: boolean;
+}
+
 interface ScrollComponentProps {
   children: ReactNode;
   options?: {
@@ -9,7 +14,7 @@ interface ScrollComponentProps {
     easing?: string;
     ordered?: boolean;
     scrollBar?: boolean;
-    onLeave?: (currentPoint: number, nextPoint: number) => { cancel?: boolean };
+    onLeave?: (currentPoint: number, nextPoint: number) => OnLeaveResult;
     onArrive?: (prevPoint: number, currentPoint: number) => void;
   };
 }
@@ -24,7 +29,7 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children, options }) 
     easing: 'linear',
     ordered: true,
     scrollBar: true,
-    onLeave: () => ({}),
+    onLeave: (): OnLeaveResult => ({}),
     onArrive: () => {},
   };
 
@@ -159,7 +164,7 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children, options }) 
   };
 
   return (
-    <div ref={containerRef} style={{ overflowY: config.scrollBar ? 'scroll' : 'hidden', height: '100dvh' }}>
+    <div ref={containerRef} style={{ overflowY: config.scrollBar ? 'scroll' : 'hidden', height: '100dvh', width: '100%' }}>
       {children}
     </div>
   );

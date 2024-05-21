@@ -5,6 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 import ProjectHero from '../projectHero/projectHero.compoent';
 import ProjectHeading from '../projectHeading/projectHeading.component';
 import ScrollComponent from '../scroll/scroll.component'
+import { Settings } from '@/sanity/types/Settings';
+import { ProjectCategory } from '@/sanity/types/ProjectCategory';
+import PrevNext from '../prevNext/prevNext.component';
+import Header from '../header/header.component';
 
 
 export const dynamic = 'force-dynamic'
@@ -21,10 +25,15 @@ type LinkMark = {
   };
 
 type HeaderProps = {
-    project: SingleProject;
     password?: string | null; 
     images: ProjectAssets[];
     imagesHero: HeroImage[];
+    project: SingleProject;
+    settings: Settings[];
+    projects: SingleProject[]
+    categories: ProjectCategory[]
+    slug: string;
+    sortedProjects: SingleProject[];
 }
   
   
@@ -44,16 +53,16 @@ type HeaderProps = {
   };
 
 
-export default function ProjectDetails({ project, password }: HeaderProps) {
+export default function ProjectDetails({ project, password, projects, categories, slug,settings }: HeaderProps) {
 
     return (
         <>
          <ScrollComponent>
-         <ProjectHeading project={project}/>
-        <section className="projectHeadingContainer">
+
         {project.projectHerovisual && (
-          <div className="section " data-snap-point>
-            <ProjectHero imagesHero={project.projectHerovisual} />
+          <div className="projectHeadingContainer" data-snap-point>
+          <ProjectHeading project={project}/>
+          <ProjectHero imagesHero={project.projectHerovisual} />
 
           </div>
           
@@ -61,42 +70,53 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
 
          
         )}
-        <div className="section" data-snap-point>
-        <section className="projectdescContainer">
-          {project.projectdescription && (
-          <section className="projectDescription" key={uuidv4()}>
-              <PortableText value={project.projectdescription} components={components as any} />
+        <section className="projcetbodyContainer">
+        <Header set={settings} projects={projects} categories={categories}/>
+        <section className="section" data-snap-point>
+        <section className="projectdescContainer"  >
+            {project.projectdescription && (
+              <section className="projectDescription" key={uuidv4()}>
+                  <PortableText value={project.projectdescription} components={components as any} />
+              </section>
+            )}
+            {project.creditsProject && (
+              <section className="creditContainer">
+                {project.creditsProject.map((credit)=>(
+                <div className="credit" key={credit._key}>
+                  <span>{credit.creditLabel}</span>
+                  <span>{credit.creditName}</span>
+                </div>
+              ))}
+              </section>
+              
+            )}
+              
           </section>
-          )}
-          {project.creditsProject && (
-            <section className="creditContainer">
-              {project.creditsProject.map((credit)=>(
-              <div className="credit" key={credit._key}>
-                <span>{credit.creditLabel}</span>
-                <span>{credit.creditName}</span>
-              </div>
-            ))}
-            </section>
-            
-          )}
-            
-        </section>
-
-        </div>
-
 
         </section>
+
+          <section className="imagecontainer">
+          <section className="images">
+            {project.projectImages && (
+            
+            <ProjectImages images={project.projectImages} />
+            
+            )}
+
+        </section>
+          <PrevNext projects={projects} categories={categories} sortedProjects={[]} slug={slug} />
+
+          </section>
+
+
+        </section>
+
+
+
 
       
 
-        <section className="images">
-        {project.projectImages && (
-        
-        <ProjectImages images={project.projectImages} />
-        
-        )}
 
-        </section>
         </ScrollComponent>
 
         

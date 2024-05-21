@@ -1,48 +1,33 @@
 "use client"
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter,usePathname } from 'next/navigation'
 
-const ScrollToBottomDetector = () => {
+const RedirectToOffice = () => {
   const router = useRouter();
-  const pathname = usePathname();
+  const ref = useRef(null);
 
   useEffect(() => {
-    const hasDisplayed = localStorage.getItem('hasDisplayed');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          router.push('/office');
+        }
+      },
+      { threshold: 0.1 } // Adjust the threshold as needed
+    );
 
-    function handleScroll() {
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollTop = (window.scrollY || document.documentElement.scrollTop)  ;
-
-      if (!hasDisplayed && windowHeight + scrollTop >= documentHeight && pathname !== '/office') {
-        router.push('/office');
-        localStorage.setItem('hasDisplayed', 'true');
-      }
+    if (ref.current) {
+      observer.observe(ref.current);
     }
-
-    if (!hasDisplayed) {
-      window.addEventListener('scroll', handleScroll);
-
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [router, pathname]);
-
-  // Remove the flag from local storage when the user closes the browser window or navigates away from the page
-  useEffect(() => {
-    const cleanupLocalStorage = () => {
-      localStorage.removeItem('hasDisplayed');
-    };
-
-    window.addEventListener('beforeunload', cleanupLocalStorage);
 
     return () => {
-      window.removeEventListener('beforeunload', cleanupLocalStorage);
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
     };
-  }, []);
+  }, [router]);
 
-  return null; // Render nothing if the component shouldn't be displayed
+  return <div ref={ref} style={{ height: '1vh', background: 'transparent' }}  data-snap-point />;
 };
 
-export default ScrollToBottomDetector;
+export default RedirectToOffice;
