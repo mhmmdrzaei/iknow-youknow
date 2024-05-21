@@ -25,7 +25,7 @@ export default function ProjectImages({ images }: HeaderProps) {
         switch (items._type) {
           case 'project_video':
             return (
-              <div className="section keen-slider__slide" key={uuidv4()}>
+              <div className="section keen-slider__slide" data-snap-point key={uuidv4()}>
                 <div className="projectVideo" style={maxWidthStyle}>
                   <video autoPlay loop muted playsInline>
                     <source src={items.url} type="video/mp4" />
@@ -37,7 +37,7 @@ export default function ProjectImages({ images }: HeaderProps) {
 
           case 'projectImage':
             return (
-              <div className="section keen-slider__slide" key={uuidv4()}>
+              <div className="section keen-slider__slide" data-snap-point key={uuidv4()}>
                 <figure className="projectImg" style={maxWidthStyle}>
                   <Image
                     src={items.url}
@@ -55,7 +55,7 @@ export default function ProjectImages({ images }: HeaderProps) {
           case 'projectText':
             const markup = { __html: `${items.text}` };
             return (
-              <div className="section keen-slider__slide" key={uuidv4()}>
+              <div className="section keen-slider__slide" data-snap-point key={uuidv4()}>
                 <div className="videotextContainer">
                   <div className='embedVideoContent' dangerouslySetInnerHTML={markup} />
                 </div>

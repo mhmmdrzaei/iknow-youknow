@@ -1,69 +1,165 @@
-"use client"
-import React, { useEffect, ReactNode,useState } from 'react';
+"use client";
+import React, { useEffect, useRef, useState, ReactNode } from 'react';
+
 interface ScrollComponentProps {
   children: ReactNode;
+  options?: {
+    arrowKeys?: boolean;
+    duration?: number;
+    easing?: string;
+    ordered?: boolean;
+    scrollBar?: boolean;
+    onLeave?: (currentPoint: number, nextPoint: number) => { cancel?: boolean };
+    onArrive?: (prevPoint: number, currentPoint: number) => void;
+  };
 }
 
-const ScrollComponent: React.FC<ScrollComponentProps> = ({ children }) => {
-  useEffect(() => {
-    const sections = document.querySelectorAll(`.section`);
-    let currentSectionIndex = 0;
-    let isScrolling = false;
-    let accumulatedScroll = 0;
-    const scrollThreshold = 200; // Adjust this value as needed for your scroll sensitivity
-    const defaultDuration = 800; // Default duration for smooth scrolling
-    const fastDuration = 800; // Faster duration for sections with a parent of .singleCatListing or .hero_img
-    
+const ScrollComponent: React.FC<ScrollComponentProps> = ({ children, options }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [scrolling, setScrolling] = useState(false);
 
-    const scrollToSection = (index: number) => {
-      if (isScrolling) return;
-      isScrolling = true;
-      const section = sections[index];
-      const hasFastParent = section.closest('.singleCatListing') || section.closest('.hero_img');
-      const duration = hasFastParent ? fastDuration : defaultDuration;
-      section.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        isScrolling = false;
-      }, duration);
+  const defaults = {
+    arrowKeys: false,
+    duration: 600,
+    easing: 'linear',
+    ordered: true,
+    scrollBar: true,
+    onLeave: () => ({}),
+    onArrive: () => {},
+  };
+
+  const config = { ...defaults, ...options };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const snapPoints = Array.from(container.querySelectorAll('[data-snap-point]'));
+
+    if (!config.ordered) {
+      snapPoints.sort((a, b) => {
+        const aVal = Number((a as HTMLElement).dataset.snapPoint);
+        const bVal = Number((b as HTMLElement).dataset.snapPoint);
+        return aVal - bVal;
+      });
+    }
+
+    container.style.overflowY = config.scrollBar ? 'scroll' : 'hidden';
+
+    const lastY = { current: 0 };
+
+    const handleWheel = (e: WheelEvent) => {
+      const delta = -e.deltaY;
+      if (delta > 5) scrollPrev();
+      if (delta < -5) scrollNext();
+      e.preventDefault();
     };
 
-    const handleScroll = (event: WheelEvent) => {
-      if (isScrolling) return;
-      accumulatedScroll += event.deltaY;
-      if (Math.abs(accumulatedScroll) >= scrollThreshold) {
-        const direction = accumulatedScroll > 0 ? 1 : -1;
-        const nextIndex = Math.min(Math.max(currentSectionIndex + direction, 0), sections.length - 1);
-        if (nextIndex !== currentSectionIndex) {
-          currentSectionIndex = nextIndex;
-          scrollToSection(currentSectionIndex);
-        }
-        accumulatedScroll = 0; // Reset the accumulated scroll after moving one section
+    const handleTouchStart = (e: TouchEvent) => {
+      lastY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const currentY = e.touches[0].clientY;
+      const delta = currentY - lastY.current;
+      if (delta > 5) scrollPrev();
+      if (delta < -5) scrollNext();
+      lastY.current = currentY;
+      e.preventDefault();
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowUp') scrollPrev();
+      if (e.key === 'ArrowDown') scrollNext();
+    };
+
+    container.addEventListener('wheel', handleWheel);
+    container.addEventListener('touchstart', handleTouchStart);
+    container.addEventListener('touchmove', handleTouchMove);
+    if (config.arrowKeys) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      container.removeEventListener('wheel', handleWheel);
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
+      if (config.arrowKeys) {
+        window.removeEventListener('keydown', handleKeyDown);
       }
     };
+  }, [config]);
 
- const handleKey = (event: KeyboardEvent) => {
-    if (isScrolling) return;
+  const currentPoint = (): number => {
+    const container = containerRef.current;
+    if (!container) return -1;
 
-    if (event.key === 'ArrowUp') { // Up arrow key
-      const newIndex = Math.max(currentSectionIndex - 1, 0);
-      scrollToSection(newIndex);
-    } else if (event.key === 'ArrowDown') { // Down arrow key
-      const newIndex = Math.min(currentSectionIndex + 1, document.querySelectorAll('.section').length - 1);
-      scrollToSection(newIndex);
+    const middleOfElem = container.clientHeight / 2;
+    const snapPoints = Array.from(container.querySelectorAll('[data-snap-point]'));
+
+    let currentPoint = -1;
+    let minDiff = Infinity;
+
+    snapPoints.forEach((snapPoint, index) => {
+      const rect = (snapPoint as HTMLElement).getBoundingClientRect();
+      const pointMiddle = (rect.top + rect.bottom) / 2;
+      const diff = Math.abs(pointMiddle - middleOfElem);
+      if (diff < minDiff) {
+        currentPoint = index;
+        minDiff = diff;
+      }
+    });
+
+    return currentPoint;
+  };
+
+  const scrollToPoint = (targetPoint: number) => {
+    if (scrolling) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const snapPoints = Array.from(container.querySelectorAll('[data-snap-point]'));
+    const current = currentPoint();
+
+    if (config.onLeave(current, targetPoint)?.cancel) return;
+
+    setScrolling(true);
+
+    const containerHeight = container.clientHeight;
+    const targetRect = (snapPoints[targetPoint] as HTMLElement).getBoundingClientRect();
+    const targetMiddle = (targetRect.top + targetRect.bottom) / 2;
+    const middleOfContainer = containerHeight / 2;
+    const currentScrollTop = container.scrollTop;
+    let scrollTop = currentScrollTop + (targetMiddle - middleOfContainer);
+
+    scrollTop = Math.max(0, Math.min(scrollTop, container.scrollHeight - containerHeight));
+
+    container.scrollTo({
+      top: scrollTop,
+      behavior: 'smooth',
+    });
+
+    setTimeout(() => {
+      setScrolling(false);
+      config.onArrive(current, targetPoint);
+    }, config.duration);
+  };
+
+  const scrollPrev = () => {
+    const current = currentPoint();
+    if (current > 0) scrollToPoint(current - 1);
+  };
+
+  const scrollNext = () => {
+    const current = currentPoint();
+    if (current < (containerRef.current?.querySelectorAll('[data-snap-point]').length || 0) - 1) {
+      scrollToPoint(current + 1);
     }
   };
 
-    window.addEventListener('wheel', handleScroll, { passive: false });
-    window.addEventListener('keydown', handleKey);
-
-    return () => {
-      window.removeEventListener('wheel', handleScroll);
-      window.removeEventListener('keydown', handleKey);
-    };
-  }, []);
-
   return (
-    <div className="container-scroll">
+    <div ref={containerRef} style={{ overflowY: config.scrollBar ? 'scroll' : 'hidden', height: '100dvh' }}>
       {children}
     </div>
   );

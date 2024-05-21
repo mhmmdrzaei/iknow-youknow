@@ -29,7 +29,7 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
               )
               .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity)) // Sort based on the 'sort' field
               .map((project) => (
-                <li key={uuidv4()} id={project.slug} className='section keen-slider__slide'>
+                <li key={uuidv4()} id={project.slug} className='section keen-slider__slide' data-snap-point>
                   <Link href={`/${project.slug}`}>
                   <ProjectHero imagesHero={project.projectHerovisual} />
 

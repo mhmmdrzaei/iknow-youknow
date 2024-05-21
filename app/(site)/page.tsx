@@ -47,18 +47,19 @@ export default async function Home() {
         <ScrollComponent>
 
        <HeroContainer settings={settings}/>
-       <Header set={settings} projects={projects} categories={categories}/>
+       
        
 
       
       <section className="pageMain homepage">
+      <Header set={settings} projects={projects} categories={categories}/>
     
       <CategoriesHome categories={categories} />
 
       <ProjectListing projects={projects} categories={categories}/>
 
       </section>
-      <section className="section officeSection">
+      <section className="section officeSection" data-snap-point>
       <ScrollToBottomDetector />
 
       </section>

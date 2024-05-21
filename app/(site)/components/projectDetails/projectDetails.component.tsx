@@ -52,7 +52,7 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
          <ProjectHeading project={project}/>
         <section className="projectHeadingContainer">
         {project.projectHerovisual && (
-          <div className="section">
+          <div className="section " data-snap-point>
             <ProjectHero imagesHero={project.projectHerovisual} />
 
           </div>
@@ -61,7 +61,7 @@ export default function ProjectDetails({ project, password }: HeaderProps) {
 
          
         )}
-        <div className="section">
+        <div className="section" data-snap-point>
         <section className="projectdescContainer">
           {project.projectdescription && (
           <section className="projectDescription" key={uuidv4()}>
