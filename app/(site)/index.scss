@@ -66,10 +66,10 @@ figure {
 }
 h3, h4, h5, em,h1, h2 {
    
-    font-family: authentic_sans60, sans-serif;
+    font-family: authentic_sans90, sans-serif;
     font-weight: 100;
 }
-p, span, button, a,b {
+p, span, button, a,b,.embedVideoContent {
     font-family: authentic_sans90, sans-serif;
 }
 
@@ -158,7 +158,6 @@ body {
         text-transform: uppercase;
         margin: 0;
         align-content: center;
-        font-weight: 600;
         cursor: pointer;
         &:hover {
             color: white;
@@ -312,6 +311,7 @@ body {
        cursor: pointer;
        .categoryName {
         width: calc(50% - 41px);
+        
         padding-left: 40px;
         border-right: 1px solid black;
         height: 100%;
@@ -319,6 +319,7 @@ body {
             font-size: 8vw;
             letter-spacing: -.1vw;
             // font-weight: 100;
+            font-family: authentic_sans60, sans-serif;
             margin: 0;
             transform: translate(0%, 25%);
         }
@@ -413,7 +414,7 @@ body {
 
       }
       .officeSection {
-        height: 10px;
+        height: 5px;
         width: 100%;
       }
 // Project page 
@@ -453,8 +454,7 @@ body {
     p, a {
         font-size: 1.8vw;
         line-height: 1.4;
-        font-weight: bold;
-        font-family: authentic_sans60, sans-serif;
+        font-family: authentic_sans90, sans-serif;
 
     }
    
@@ -478,7 +478,7 @@ body {
         img {
             max-width: 100%;
             width: 100%;
-            max-height: 80dvh;
+            max-height: 82dvh;
         }
     }
     .projectVideo {
@@ -512,8 +512,8 @@ body {
                 padding-right: 40px;
                 margin-top: 0;
                 font-size: 1.8vw;
-                font-weight: 200;
-                // font-family: authentic_sans60, sans-serif;
+                font-weight: 600;
+                font-family: authentic_sans60, sans-serif;
                 line-height: 1.4;
                 margin-bottom: 20px;
             }
@@ -531,7 +531,7 @@ body {
                     font-family: authentic_sans90, sans-serif;
                     line-height: 1.5;
                     margin: 0;
-                    font-weight: 300;
+                    // font-weight: 600;
                     font-size: .95vw;
                     @media screen and (max-width: 1200px) {
                         font-size: 14.5px;
