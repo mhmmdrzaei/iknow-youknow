@@ -474,9 +474,12 @@ body {
     // margin-bottom: 80px;
     figure,.projectVideo {
         margin: 0 auto;
+        width: 100%;
         
         img {
             max-width: 100%;
+            width: 100%;
+            height: auto;
             max-height: 8lvh;
             width: auto;
         }
