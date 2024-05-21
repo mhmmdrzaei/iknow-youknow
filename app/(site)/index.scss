@@ -129,7 +129,7 @@ body {
     scroll-snap-type: y mandatory; /* Enable scroll snapping */
   }
 //   .keen-slider {
-//     height: 100lvh;
+//     height: 100dvh;
 //   }
 
 
@@ -138,14 +138,14 @@ body {
 .heroSection {
     position: relative;
     width: 100%;
-    height: 100lvh;
+    height: 100dvh;
     overflow: hidden;
 
     figure {
         position: absolute;
         img {
             object-fit: cover;
-            height: 100lvh;
+            height: 100dvh;
         }
       
         
@@ -213,7 +213,7 @@ body {
 
     .menuItems {
         position: absolute;
-        height: calc(100lvh - 64px);
+        height: calc(100dvh - 64px);
         background: white;
         top: 61px;
         // transition: transform ease .5s;
@@ -300,11 +300,11 @@ body {
 //Categories 
 .categoriesContainer {
     width: 100%;
-    height: 100lvh;
+    height: 100dvh;
     background: white;
 
     .categoryEach {
-       height: calc(33.33lvh - 20px);
+       height: calc(33.33dvh - 20px);
        border-bottom: 1px solid black;
        width: 100%;
        @extend .flex;
@@ -351,7 +351,7 @@ body {
         a {
             display: block;
             width: 100%;
-            height: 100lvh;
+            height: 100dvh;
             position: relative;
             .singleProjDetails {
                 @extend .contain;
@@ -391,18 +391,18 @@ body {
             // position: absolute;
             object-fit: cover;
             max-width: 100%;
-            height: 100lvh;
+            height: 100dvh;
         }
     }
     .hero_Video {
         video {
             width: 100%;
-            height: 100lvh;
+            height: 100dvh;
             object-fit: cover;
         }
     }
     .section {
-        height: 100lvh;
+        height: 100dvh;
         width: 100%;
         scroll-snap-align: start; /* Each section aligns at the start */
         display: flex;
@@ -443,7 +443,7 @@ body {
 .projectdescContainer {
     position: relative;
     width: 100%;
-    height: 100lvh;
+    height: 100dvh;
 }
 .projectDescription {
     width: calc(50% - 40px);
@@ -478,13 +478,13 @@ body {
         img {
             max-width: 100%;
             width: 100%;
-            max-height: 80lvh;
+            max-height: 80dvh;
         }
     }
     .projectVideo {
         video {
             max-width: 100%;
-            max-height: 80lvh;
+            max-height: 80dvh;
         }
     }
     .videotextContainer {
@@ -555,7 +555,7 @@ body {
 
 @keyframes slideup {
     from {
-      top: 100lvh;
+      top: 100dvh;
     }
   
     to {
@@ -585,7 +585,7 @@ body {
 }
 .footer {
     width: 100%;
-    height: 30lvh;
+    height: 30dvh;
   }
 @media (max-width: 1000px){
     .singleCatListing li a {
@@ -692,7 +692,7 @@ body {
     // width: 100%;
     border-left: 0;
     top: 111px;
-    height: calc(100lvh - 86px);
+    height: calc(100dvh - 86px);
     ul li a {
         display: block;
         padding: 15px 10px;
@@ -716,7 +716,7 @@ body {
 //categories 
 .categoriesContainer {
     .categoryEach {
-        height: calc(33.3lvh - 29px);
+        height: calc(33.3dvh - 29px);
         .categoryName {
             width: 100%;
             border-right: 0;
