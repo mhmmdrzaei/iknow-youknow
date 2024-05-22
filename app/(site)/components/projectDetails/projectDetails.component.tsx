@@ -71,7 +71,7 @@ export default function ProjectDetails({ project, password, projects, categories
          
         )}
         <section className="projcetbodyContainer">
-        <Header set={settings} projects={projects} categories={categories}/>
+        
         <section className="section" data-snap-point>
         <section className="projectdescContainer"  >
             {project.projectdescription && (
@@ -96,6 +96,7 @@ export default function ProjectDetails({ project, password, projects, categories
         </section>
 
           <section className="imagecontainer">
+          <Header set={settings} projects={projects} categories={categories}/>
           <section className="images">
             {project.projectImages && (
             
