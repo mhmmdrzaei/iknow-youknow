@@ -39,7 +39,7 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                     <span className='clientName'>
                       {project.clientName && (
                           
-                          <>Client: {project.clientName} </>
+                          <><div className='clientLabel'>Client</div>{project.clientName} </>
                       )}
                     </span>
                     <span className='category'>

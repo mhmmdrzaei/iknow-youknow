@@ -66,15 +66,16 @@ const handleCloseOffice = () => {
     return (
         <>
             <section  className='menuHeader'>
-            <Link key={uuidv4()} className={`worksLink ${pathname === '/' ? 'active' : 'inactive'}`} href={`#categories`} >
-                    Work
+            <Link key={uuidv4()} href={`/office`} className={`officeLink ${pathname === '/office' ? 'inactive' : ''}`}>
+                    office
             </Link>
             <button key={uuidv4()} className={`menuButton`} onClick={openMenu} >
             {menuButtonText}
             </button>
-            <Link key={uuidv4()} href={`/office`} className={`officeLink ${pathname === '/office' ? 'inactive' : ''}`}>
-                    office
+            <Link key={uuidv4()} className={`worksLink ${pathname === '/' ? 'active' : 'inactive'}`} href={`#categories`} >
+                    Work
             </Link>
+
             <button key={uuidv4()} onClick={handleCloseProject} className={`close-project ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
 
             <button key={uuidv4()} onClick={handleCloseOffice}  className={`link ${pathname === '/office' ? 'active' : 'inactive'}`}>

@@ -164,7 +164,7 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children, options }) 
   };
 
   return (
-    <div ref={containerRef} style={{ overflowY: config.scrollBar ? 'scroll' : 'hidden', height: '100dvh', width: '100%' }}>
+    <div className='scroller' ref={containerRef} style={{ overflowY: config.scrollBar ? 'scroll' : 'hidden', height: '100dvh', width: '100%' }}>
       {children}
     </div>
   );
