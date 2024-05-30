@@ -52,7 +52,6 @@
 p {
     font-family: 'Authentic Sans Pro', Arial, sans-serif;
     font-variation-settings: 'wght' 70, 'wdth' 100;
-    font-weight: 700;
 }
 
 
@@ -373,6 +372,7 @@ body {
         h2 {
             font-size: 8vw;
             position: absolute;
+            font-variation-settings: "wght" 60, "wdth" 100;
             // transform: translate(35px, -50%);
             top: 50%;
             left: 0%;
@@ -389,6 +389,8 @@ body {
         p {
             margin: 18px 19px;
             line-height: 1.5;
+            letter-spacing: .1px;
+            font-variation-settings: "wght" 80, "wdth" 100;
             // font-family: authentic_sans90, sans-serif;
         }
        }
