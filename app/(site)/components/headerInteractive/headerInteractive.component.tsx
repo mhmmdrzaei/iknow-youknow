@@ -24,7 +24,7 @@ export default function Menu({ projects, categories }: HeaderProps) {
 
 const openMenu = () => {
     setActiveMenu(prevState => !prevState);
-    setMenuButtonText(prevText => prevText === 'View List' ? 'Close Menu' : 'View List');
+    setMenuButtonText(prevText => prevText === 'View List' ? 'Close List' : 'View List');
 };
 // New function to explicitly close the menu
 const closeMenu = () => {
@@ -66,9 +66,13 @@ const handleCloseOffice = () => {
     return (
         <>
             <section  className='menuHeader'>
+            <button key={uuidv4()} onClick={handleCloseProject} className={`close-project ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
             <Link key={uuidv4()} href={`/office`} className={`officeLink ${pathname === '/office' ? 'inactive' : ''}`}>
                     office
             </Link>
+            <button key={uuidv4()} onClick={handleCloseOffice}  className={`link ${pathname === '/office' ? 'active' : 'inactive'}`}>
+                    Close Office
+            </button>
             <button key={uuidv4()} className={`menuButton`} onClick={openMenu} >
             {menuButtonText}
             </button>
@@ -76,11 +80,9 @@ const handleCloseOffice = () => {
                     Work
             </Link>
 
-            <button key={uuidv4()} onClick={handleCloseProject} className={`close-project ${pathname === '/' || pathname === '/office' ? 'inactive' : 'active'}`}>Close Project</button>
 
-            <button key={uuidv4()} onClick={handleCloseOffice}  className={`link ${pathname === '/office' ? 'active' : 'inactive'}`}>
-                    Close Office
-            </button>
+
+
        
 
             </section>
