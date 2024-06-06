@@ -630,12 +630,15 @@ body {
         display: flex;
         top: 35px;
         position: relative;
+        max-height: calc(100dvh - 71px);
+        overflow: hidden;
 
         img {
             max-width: 100%;
             margin: 0 auto;
             width: auto;
-            max-height: 90dvh;
+            object-fit: cover;
+            // max-height: 90dvh;
             // height: auto;
         }
     }
@@ -851,6 +854,15 @@ body {
 }
 
 @media(max-width: 640px){
+    h4, h5, em,h1, h2 {
+        font-variation-settings: 'wght' 80, 'wdth' 100;
+
+    }
+    p, span, button, a,b,.embedVideoContent,h3 {
+
+        font-variation-settings: 'wght' 80, 'wdth' 100;
+
+    }
 
 .contain {
     width: calc(100% - 40px);
