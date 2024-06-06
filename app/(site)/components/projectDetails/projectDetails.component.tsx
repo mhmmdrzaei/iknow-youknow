@@ -111,7 +111,7 @@ export default function ProjectDetails({ project, password, projects, categories
             )}
 
         </section>
-          <PrevNext projects={projects} categories={categories} sortedProjects={[]} slug={slug} />
+          <PrevNext projects={projects} categories={categories} slug={slug} />
 
           </section>
 
