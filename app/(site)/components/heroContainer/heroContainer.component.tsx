@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import HeroImage from '../heroImg/heroImg.component'; 
 import HeroImageMobile from '../heroImgMobile/heroImgMobile.component'; 
 import { Settings } from "@/sanity/types/Settings";
+import { v4 as uuidv4 } from 'uuid';
 type HeroContainerProps = {
     settings: Settings[];
 };
@@ -40,7 +41,11 @@ export default function HeroContainer({ settings }: HeroContainerProps) {
     return (
         <section className='heroSection section keen-slider__slide' data-snap-point onClick={handleClick} id='header'>
             <HeroComponent settings={settings}  />;
-            <h1>I Know You Know</h1>
+            {settings.map((setting) => ( 
+                  
+                    <img src={setting.logo} className='logoLarge' key={uuidv4()}/>
+             
+                ))}
         </section>
 
 

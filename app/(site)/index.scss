@@ -175,6 +175,7 @@ body {
 
     figure {
         position: absolute;
+        height: 100vh;
         img {
             object-fit: cover;
             height: 100dvh;
@@ -182,27 +183,41 @@ body {
       
         
     }
-    h1 {
-        font-size: 6.4vw;
-        position: absolute;
-        width: 100%;
-        text-align: center;
-        text-transform: uppercase;
-        margin: 0;
-        align-content: center;
+    .logoLarge {
+        width: 61%;
+        object-fit: contain;
+        z-index: 2;
+        position: relative;
+        top: -39px;
+        left: -2px;
+        filter:invert(1);
         cursor: pointer;
-        color: white;
-        top: 52.5%;
-        left: 50%;
-        font-weight: 300;
-        transform: translateY(-100%) translateX(-50%);
-        font-variation-settings: "wght" 90, "wdth" 100;
-        letter-spacing: -1px;
         &:hover {
-            color: black;
+            filter:invert(0);
             transition: .3s ease-in-out;
         }
     }
+    // h1 {
+    //     font-size: 6.4vw;
+    //     position: absolute;
+    //     width: 100%;
+    //     text-align: center;
+    //     text-transform: uppercase;
+    //     margin: 0;
+    //     align-content: center;
+    //     cursor: pointer;
+    //     color: white;
+    //     top: 52.5%;
+    //     left: 50%;
+    //     font-weight: 300;
+    //     transform: translateY(-100%) translateX(-50%);
+    //     font-variation-settings: "wght" 90, "wdth" 100;
+    //     letter-spacing: -1px;
+    //     &:hover {
+    //         color: black;
+    //         transition: .3s ease-in-out;
+    //     }
+    // }
 }
 // heading {
     .headingContainer {
@@ -222,6 +237,9 @@ body {
             cursor: pointer;
         width: 40%;
         max-width: 330px;
+        &:hover {
+            filter: invert(0);
+        }
         img {
             align-self: center;
             margin-bottom: 2px;
@@ -991,13 +1009,17 @@ body {
 
 }
 .heroSection {
-    h1 {
-        font-size: 9.3vw;
-        color: #FFFFFF;
-        top: 51.5%;
-        font-variation-settings: "wght" 70, "wdth" 100;
-        letter-spacing: 0;
+    // h1 {
+    //     font-size: 9.3vw;
+    //     color: #FFFFFF;
+    //     top: 51.5%;
+    //     font-variation-settings: "wght" 70, "wdth" 100;
+    //     letter-spacing: 0;
 
+    // }
+    .logoLarge {
+        width: calc(100% - 40px);
+        top: -22px;
     }
 }
 //categories 
