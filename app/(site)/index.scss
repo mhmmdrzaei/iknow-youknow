@@ -120,7 +120,7 @@ a {
     color: #000000;
     text-decoration: none;
     &:active{
-        font-weight: 700;
+        // font-weight: 700;
     }
     font-size: .8vw;
     @media screen and (max-width: 1200px) {
@@ -326,7 +326,7 @@ body {
                         float: right;
                         text-align: right;
                         font-size: .95vw;
-                        font-weight: 700;
+                        // font-weight: 700;
                         padding-top: 4px;
                         display: block;
                         margin-right: 30px;
@@ -855,12 +855,12 @@ body {
 
 @media(max-width: 640px){
     h4, h5, em,h1, h2 {
-        font-variation-settings: 'wght' 82, 'wdth' 100;
+        font-variation-settings: 'wght' 85, 'wdth' 100;
 
     }
     p, span, button, a,b,.embedVideoContent,h3 {
 
-        font-variation-settings: 'wght' 80, 'wdth' 100; 
+        font-variation-settings: 'wght' 82, 'wdth' 100; 
 
     }
 
