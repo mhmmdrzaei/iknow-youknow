@@ -4,7 +4,6 @@ import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import CloseProject from '../closeProject/closeProject.component';
 
 // Helper function to sort categories and projects
 const sortCategoriesAndProjects = (

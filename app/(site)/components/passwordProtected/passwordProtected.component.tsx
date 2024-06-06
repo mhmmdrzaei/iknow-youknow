@@ -50,7 +50,7 @@ const PasswordProtectedProject: React.FC<PasswordProtectedProjectProps> = ({ pro
           />
           <button onClick={handlePasswordSubmit}>Submit</button>
         </section>
-        <PrevNext projects={projects} categories={categories} sortedProjects={[]} slug={slug} />
+        <PrevNext projects={projects} categories={categories} slug={slug} />
         </>
 
       );
