@@ -17,7 +17,7 @@ const CategoriesHome = ({ categories }: HeaderProps) => {
     };
   
     return (
-      <div className="section keen-slider__slide" data-snap-point>
+      <div className="section keen-slider__slide categoriesSection" data-snap-point>
         <section className="categoriesContainer" id="categories">
           {categories
            .sort((a, b) => (a.sort || Infinity) - (b.sort || Infinity))

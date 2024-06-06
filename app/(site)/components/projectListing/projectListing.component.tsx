@@ -36,6 +36,7 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
 
                     <section className="singleProjDetails">
                     <span>{project.shortProjectDescription}</span>
+                    <div className="clientDetails">
                     <span className='clientName'>
                       {project.clientName && (
                           
@@ -48,6 +49,9 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                         <>  {project.categoryName}</>
                       )}
                     </span>
+
+                    </div>
+
                     
                     </section>
                     

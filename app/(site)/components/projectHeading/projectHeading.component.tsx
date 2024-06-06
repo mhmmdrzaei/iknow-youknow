@@ -28,7 +28,7 @@ const router = useRouter()
 
     return (
         <section className="projectHeading" key={project._id}>
-        <h1>{project.title}</h1>
+        <h1 onClick={handleCloseProject}>{project.title}</h1>
         <button onClick={handleCloseProject}>Close Project</button>
         </section>
        

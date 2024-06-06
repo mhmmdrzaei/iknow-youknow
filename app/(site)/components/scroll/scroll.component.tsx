@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState, ReactNode } from 'react';
+import { useRouter } from 'next/router';
 
 // Define a type for the return value of onLeave
 interface OnLeaveResult {

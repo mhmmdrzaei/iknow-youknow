@@ -58,10 +58,11 @@ export default function ProjectDetails({ project, password, projects, categories
     return (
         <>
          <ScrollComponent>
-
+        <section>
+        <ProjectHeading project={project}/>
         {project.projectHerovisual && (
           <div className="projectHeadingContainer" data-snap-point>
-          <ProjectHeading project={project}/>
+         
           <ProjectHero imagesHero={project.projectHerovisual} />
 
           </div>
@@ -70,9 +71,7 @@ export default function ProjectDetails({ project, password, projects, categories
 
          
         )}
-        <section className="projcetbodyContainer">
-        
-        <section className="section" data-snap-point>
+                <section className="section" data-snap-point>
         <section className="projectdescContainer"  >
             {project.projectdescription && (
               <section className="projectDescription" key={uuidv4()}>
@@ -94,6 +93,13 @@ export default function ProjectDetails({ project, password, projects, categories
           </section>
 
         </section>
+
+        </section>
+
+       
+        <section className="projcetbodyContainer">
+        
+
 
           <section className="imagecontainer">
           <Header set={settings} projects={projects} categories={categories}/>
