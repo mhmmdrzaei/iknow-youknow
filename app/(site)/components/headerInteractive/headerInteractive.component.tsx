@@ -33,13 +33,27 @@ const closeMenu = () => {
 const pathname = usePathname()
 
 const router = useRouter()
+const [isMobile, setIsMobile] = useState(false);
 
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 640);
+  };
+
+  handleResize(); // Check on initial load
+  window.addEventListener('resize', handleResize);
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
 
 const handleCloseOffice = () => {
-
+  if (isMobile) {
+    router.push('/');
+  } else {
     router.back();
-    
-  };
+  }
+};
 
   const handleCloseProject = () => {
     // Get the current slug from the router object
