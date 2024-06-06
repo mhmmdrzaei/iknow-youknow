@@ -1125,6 +1125,9 @@ body {
     }
     
 }
+.singleLink a {
+    width: 100%;
+}
 .officePage {
     // .officeMenu {
     //     position: fixed;
@@ -1208,7 +1211,7 @@ body {
   }
 .singleLink {
     a {
-        width: calc(100% - 40px);
+        // width: calc(100% - 40px);
         text-align: center;
     }
 }
