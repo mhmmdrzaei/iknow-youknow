@@ -855,12 +855,12 @@ body {
 
 @media(max-width: 640px){
     h4, h5, em,h1, h2 {
-        font-variation-settings: 'wght' 80, 'wdth' 100;
+        font-variation-settings: 'wght' 82, 'wdth' 100;
 
     }
     p, span, button, a,b,.embedVideoContent,h3 {
 
-        font-variation-settings: 'wght' 80, 'wdth' 100;
+        font-variation-settings: 'wght' 80, 'wdth' 100; 
 
     }
 
@@ -1014,6 +1014,9 @@ body {
         }
         .categoryDescription {
             display: none;
+            p {
+                font-variation-settings: "wght" 80, "wdth" 100;
+            }
         }
     }
     .categoryEach:nth-child(1) {
