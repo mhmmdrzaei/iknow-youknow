@@ -73,7 +73,7 @@ export async function getsettings(): Promise<Settings[]> {
           _key,
           _type,
           "heroImgUrl": asset->url,
-          attribution
+          attribution 
        },
         "projectImages": projectImages[]{
           "url": asset->url,
