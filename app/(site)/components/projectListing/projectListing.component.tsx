@@ -5,6 +5,7 @@ import ProjectHero from '../projectHero/projectHero.compoent';
 export const dynamic = 'force-dynamic'
 import { v4 as uuidv4 } from 'uuid';
 import RedirectToOffice from '../officeScroll/officeScroll.component';
+import ScrollLink from '../categoryScroll/categoryScroll.component';
 
 
 
@@ -16,6 +17,8 @@ type HeaderProps = {
 
 
 export default function ProjectListing({ projects, categories }: HeaderProps) {
+
+  
   return (
     <>
       {categories
@@ -33,21 +36,23 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                 <li key={uuidv4()} id={project.slug} className='section keen-slider__slide' data-snap-point>
                   <Link href={`/${project.slug}`}>
                   <ProjectHero imagesHero={project.projectHerovisual} />
-
+                  </Link>
                     <section className="singleProjDetails">
-                    <span>{project.shortProjectDescription}</span>
+                    
+                    <span><Link href={`/${project.slug}`}>{project.shortProjectDescription}</Link></span>
                     <div className="clientDetails">
+                    <Link href={`/${project.slug}`}>
                     <span className='clientName'>
+                    
                       {project.clientName && (
                           
                           <><div className='clientLabel'>Client</div>{project.clientName} </>
                       )}
+                    
                     </span>
+                    </Link>
                     <span className='category'>
-                      {project.categoryName && (
-                          
-                        <>  {project.categoryName}</>
-                      )}
+                    <ScrollLink categoryName={project.categoryName} categorySlug={project.categorySlug}/>
                     </span>
 
                     </div>
@@ -57,7 +62,7 @@ export default function ProjectListing({ projects, categories }: HeaderProps) {
                     
                    
                     
-                    </Link>
+                    
                 </li>
               ))}
           </ul>

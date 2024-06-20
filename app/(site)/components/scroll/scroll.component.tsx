@@ -26,8 +26,8 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children, options }) 
 
   const defaults = {
     arrowKeys: false,
-    duration: 600,
-    easing: 'linear',
+    duration: 1000,
+    easing: 'ease-in-out',
     ordered: true,
     scrollBar: true,
     onLeave: (): OnLeaveResult => ({}),
@@ -119,37 +119,49 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children, options }) 
     return currentPoint;
   };
 
+  const easeInOutQuad = (t: number) => {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  };
+  
   const scrollToPoint = (targetPoint: number) => {
     if (scrolling) return;
-
+  
     const container = containerRef.current;
     if (!container) return;
-
+  
     const snapPoints = Array.from(container.querySelectorAll('[data-snap-point]'));
     const current = currentPoint();
-
+  
     if (config.onLeave(current, targetPoint)?.cancel) return;
-
+  
     setScrolling(true);
-
+  
     const containerHeight = container.clientHeight;
     const targetRect = (snapPoints[targetPoint] as HTMLElement).getBoundingClientRect();
     const targetMiddle = (targetRect.top + targetRect.bottom) / 2;
     const middleOfContainer = containerHeight / 2;
     const currentScrollTop = container.scrollTop;
-    let scrollTop = currentScrollTop + (targetMiddle - middleOfContainer);
-
-    scrollTop = Math.max(0, Math.min(scrollTop, container.scrollHeight - containerHeight));
-
-    container.scrollTo({
-      top: scrollTop,
-      behavior: 'smooth',
-    });
-
-    setTimeout(() => {
-      setScrolling(false);
-      config.onArrive(current, targetPoint);
-    }, config.duration);
+    const targetScrollTop = currentScrollTop + (targetMiddle - middleOfContainer);
+  
+    const startTime = performance.now();
+    const duration = config.duration; // Use the duration from the config
+  
+    const animateScroll = (time: number) => {
+      const elapsedTime = time - startTime;
+      const progress = Math.min(elapsedTime / duration, 1);
+      const easing = easeInOutQuad(progress);
+  
+      container.scrollTop = currentScrollTop + (targetScrollTop - currentScrollTop) * easing;
+  
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      } else {
+        setScrolling(false);
+        config.onArrive(current, targetPoint);
+      }
+    };
+  
+    requestAnimationFrame(animateScroll);
   };
 
   const scrollPrev = () => {
