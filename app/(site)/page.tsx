@@ -39,7 +39,7 @@ export default async function Home() {
     <main>
       <ConditionalScrollComponent>
         <HeroContainer settings={settings} />
-        <section className="pageMain homepage">
+        <section className="pageMain homepage" id="homeMain">
           <Header set={settings} projects={projects} categories={categories} />
           <CategoriesHome categories={categories} />
           <ProjectListing projects={projects} categories={categories} />

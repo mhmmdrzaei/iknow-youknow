@@ -13,7 +13,6 @@ export default function HeroImageMobile({ settings }: HeaderProps) {
                     {siteSetting.herovisualMobile.length > 0 && (
                         <>
                         {randomHero(siteSetting.herovisualMobile)}
-                        <h1>I Know You Know</h1>
                         </>
                             
                      
@@ -45,7 +44,7 @@ function randomHero(herovisualMobile: string | any[]) {
     
             <Image src={randomHero.heroImgUrl} alt={randomHero.attribution}
               key={randomHero._key}
-              width={500} height={500}
+              width={700} height={700}
                  />
         </>
     );
