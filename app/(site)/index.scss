@@ -961,8 +961,9 @@ body {
     }
 
 }
+
 .categoriesSection {
-    height: calc(100dvh - 84px);
+    height: calc(100dvh - 103px);
 }
 
 .menuButtonActive {
@@ -1061,6 +1062,7 @@ body {
 }
 //categories 
 .categoriesContainer {
+    height: initial;
     .categoryEach {
         height: calc(33.33vh - 35px);
         .categoryName {
@@ -1084,7 +1086,7 @@ body {
         }
     }
     .categoryEach:nth-child(1) {
-        margin-top: 41px;
+        margin-top: 0;
     }
     .categoryEach:nth-child(3) {
         border-bottom: none;
@@ -1153,10 +1155,7 @@ body {
     margin-top: 77px;
 
 }
-.headingfixed {
-    position: absolute;
-    // transition: 2s linear;
-}
+
 
 .has_mobile {
     .hero_Video, .homeImg {
