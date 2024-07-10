@@ -4,6 +4,7 @@ import { ProjectCategory } from '@/sanity/types/ProjectCategory';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+export const dynamic = 'force-dynamic'
 
 // Helper function to sort categories and projects
 const sortCategoriesAndProjects = (

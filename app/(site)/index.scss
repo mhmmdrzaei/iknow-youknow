@@ -667,7 +667,8 @@ body {
             margin: 0 auto;
             object-fit: cover;
             overflow: hidden;
-            // max-height: 90dvh;
+            max-height: calc(100dvh - 71px);
+            width: auto;
             // height: auto;
             @media screen and (max-width: 1200px) {
                 width: auto;

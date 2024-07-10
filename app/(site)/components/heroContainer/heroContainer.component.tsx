@@ -4,6 +4,7 @@ import HeroImage from '../heroImg/heroImg.component';
 import HeroImageMobile from '../heroImgMobile/heroImgMobile.component'; 
 import { Settings } from "@/sanity/types/Settings";
 import { v4 as uuidv4 } from 'uuid';
+export const dynamic = 'force-dynamic'
 type HeroContainerProps = {
     settings: Settings[];
 };
