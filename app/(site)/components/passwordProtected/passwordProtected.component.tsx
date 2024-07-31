@@ -24,17 +24,13 @@ const PasswordProtectedProject: React.FC<PasswordProtectedProjectProps> = ({ pro
     const [showDetails, setShowDetails] = useState<boolean>(false);
   
     const handlePasswordSubmit = () => {
-      // Check if the entered password matches the project password
       if (password === project.password) {
-        // If passwords match, set showDetails to true
         setShowDetails(true);
       } else {
-        // If passwords do not match, show an alert
         alert('Incorrect password');
       }
     };
   
-    // Check if the password field is filled out
     if (project.password && !showDetails) {
 
       return (

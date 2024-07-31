@@ -24,7 +24,6 @@ export default function HeroImageMobile({ settings }: HeaderProps) {
 }
 
 function randomHero(herovisualMobile: string | any[]) {
-    // If there's only one asset, return it
     if (herovisualMobile.length === 1) {
         const hero = herovisualMobile[0];
         return (
@@ -36,7 +35,6 @@ function randomHero(herovisualMobile: string | any[]) {
             </>
         );
     }
-    // If there are multiple assets, randomly select one
     const randomIndex = Math.floor(Math.random() * herovisualMobile.length);
     const randomHero = herovisualMobile[randomIndex];
     return (

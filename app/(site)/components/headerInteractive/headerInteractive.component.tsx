@@ -19,14 +19,12 @@ export default function Menu({ projects, categories }: HeaderProps) {
     const [activeMenu, setActiveMenu] = useState(false);
     const [menuButtonText, setMenuButtonText] = useState('View List');
 
-    // New function to explicitly open the menu
 
 
 const openMenu = () => {
     setActiveMenu(prevState => !prevState);
     setMenuButtonText(prevText => prevText === 'View List' ? 'Close List' : 'View List');
 };
-// New function to explicitly close the menu
 const closeMenu = () => {
     setActiveMenu(false);
 };
@@ -40,7 +38,7 @@ useEffect(() => {
     setIsMobile(window.innerWidth <= 640);
   };
 
-  handleResize(); // Check on initial load
+  handleResize(); 
   window.addEventListener('resize', handleResize);
   return () => {
     window.removeEventListener('resize', handleResize);
@@ -56,22 +54,18 @@ const handleCloseOffice = () => {
 };
 
   const handleCloseProject = () => {
-    // Get the current slug from the router object
+
     const currentSlug = pathname;
     const projectName = currentSlug.split('/').pop() || '';
-  
-    // Navigate to the home page
+ 
     router.push('/');
   
-    // Scroll to the element after a brief delay
     setTimeout(() => {
-      // Find the element with the ID of projectName
       const element = document.getElementById(projectName);
       if (element) {
-        // Scroll to the element
         element.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 100); // Adjust the delay time as needed
+    }, 100); 
   };
 
 

@@ -18,22 +18,22 @@
 
 // }
 
-@font-face {
-    font-family: 'authentic_sans60';
-    src: url('sources/fonts/authenticsans-60-webfont.woff2') format('woff2'),
-         url('sources/fonts/authenticsans-60-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+// @font-face {
+//     font-family: 'authentic_sans60';
+//     src: url('sources/fonts/authenticsans-60-webfont.woff2') format('woff2'),
+//          url('sources/fonts/authenticsans-60-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
 
-}
-@font-face {
-    font-family: 'authentic_sans90';
-    src: url('sources/fonts/authenticsans-90-webfont.woff2') format('woff2'),
-         url('sources/fonts/authenticsans-90-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+// }
+// @font-face {
+//     font-family: 'authentic_sans90';
+//     src: url('sources/fonts/authenticsans-90-webfont.woff2') format('woff2'),
+//          url('sources/fonts/authenticsans-90-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
 
-}
+// }
 
 
 @mixin fontSize($sizeValue){
@@ -93,11 +93,11 @@ figure {
     font-weight: 300;
     letter-spacing: .4px;
 }
-p, span, button, a,b,.embedVideoContent,h3 {
-    font-family: 'Authentic Sans Pro', Arial, sans-serif;
-    font-variation-settings: 'wght' 76, 'wdth' 100;
-    letter-spacing: .1px;
-    font-weight: 300;
+p, span, button, a,b ,h3 {
+    // font-family: 'Authentic Sans Pro', Arial, sans-serif;
+    // font-variation-settings: 'wght' 76, 'wdth' 100;
+    // letter-spacing: .1px;
+    // font-weight: 300;
     // font-family: authentic_sans90, sans-serif;
 }
 
@@ -609,7 +609,7 @@ body {
     margin: 90px 0 40px 40px;
 
     top: 0;
-    p, a {
+    p {
         font-size: 1.8vw;
         line-height: 1.4;
         padding-right: 40px;

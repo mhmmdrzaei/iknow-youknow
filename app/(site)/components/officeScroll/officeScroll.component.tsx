@@ -13,7 +13,7 @@ const RedirectToOffice = () => {
           router.push('/office');
         }
       },
-      { threshold: 0.1 } // Adjust the threshold as needed
+      { threshold: 0.1 } 
     );
 
     if (ref.current) {

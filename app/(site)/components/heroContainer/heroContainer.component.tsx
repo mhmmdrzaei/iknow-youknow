@@ -9,10 +9,9 @@ type HeroContainerProps = {
     settings: Settings[];
 };
 
-const minWidthForDesktop = 640; // Minimum width for desktop view
+const minWidthForDesktop = 640; 
 
 export default function HeroContainer({ settings }: HeroContainerProps) {
-    // Scroll to the section with id "categories" when the component is clicked
     const handleClick = () => {
         const targetId = window.innerWidth >= minWidthForDesktop ? 'categories' : 'homeMain';
         const targetSection = document.getElementById(targetId);

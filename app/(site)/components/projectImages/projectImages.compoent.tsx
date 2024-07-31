@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { ProjectAssets } from '@/sanity/types/Project';
 import Image from 'next/image';
 import React from 'react';
-
 import { useMediaQuery } from 'react-responsive';
 
 export const dynamic = 'force-dynamic'
@@ -16,10 +15,8 @@ export default function ProjectImages({ images }: HeaderProps) {
   return (
     <>
       {images.map((items) => {
-        // Check if the screen width is greater than 630px
         const isDesktopOrLaptop = window.innerWidth > 630;
 
-        // Conditionally set the maxWidth style
         const maxWidthStyle = isDesktopOrLaptop ? { maxWidth: `${items.width}%` } : {};
 
         switch (items._type) {

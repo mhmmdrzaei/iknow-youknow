@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 
-// Define a type for the return value of onLeave
 interface OnLeaveResult {
   cancel?: boolean;
 }
@@ -144,7 +143,7 @@ const ScrollComponent: React.FC<ScrollComponentProps> = ({ children, options }) 
     const targetScrollTop = currentScrollTop + (targetMiddle - middleOfContainer);
   
     const startTime = performance.now();
-    const duration = config.duration; // Use the duration from the config
+    const duration = config.duration; 
   
     const animateScroll = (time: number) => {
       const elapsedTime = time - startTime;
